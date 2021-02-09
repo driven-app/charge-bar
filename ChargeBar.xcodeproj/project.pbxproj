@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D682CA125D3336D007E675A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CA025D3336D007E675A /* AppDelegate.swift */; };
+		6D682CA325D3336E007E675A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CA225D3336E007E675A /* Assets.xcassets */; };
+		6D682CA625D3336E007E675A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CA425D3336E007E675A /* MainMenu.xib */; };
+		6D682CB225D3336E007E675A /* ChargeBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CB125D3336E007E675A /* ChargeBarTests.swift */; };
+		6D682CBD25D3336E007E675A /* ChargeBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CBC25D3336E007E675A /* ChargeBarUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6D682CAE25D3336E007E675A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D682C9525D3336D007E675A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D682C9C25D3336D007E675A;
+			remoteInfo = ChargeBar;
+		};
+		6D682CB925D3336E007E675A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D682C9525D3336D007E675A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D682C9C25D3336D007E675A;
+			remoteInfo = ChargeBar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6D682C9D25D3336D007E675A /* ChargeBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChargeBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D682CA025D3336D007E675A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6D682CA225D3336E007E675A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6D682CA525D3336E007E675A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6D682CA725D3336E007E675A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D682CA825D3336E007E675A /* ChargeBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChargeBar.entitlements; sourceTree = "<group>"; };
+		6D682CAD25D3336E007E675A /* ChargeBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChargeBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D682CB125D3336E007E675A /* ChargeBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeBarTests.swift; sourceTree = "<group>"; };
+		6D682CB325D3336E007E675A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D682CB825D3336E007E675A /* ChargeBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChargeBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D682CBC25D3336E007E675A /* ChargeBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeBarUITests.swift; sourceTree = "<group>"; };
+		6D682CBE25D3336E007E675A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D682C9A25D3336D007E675A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D682CAA25D3336E007E675A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D682CB525D3336E007E675A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D682C9425D3336D007E675A = {
+			isa = PBXGroup;
+			children = (
+				6D682C9F25D3336D007E675A /* ChargeBar */,
+				6D682CB025D3336E007E675A /* ChargeBarTests */,
+				6D682CBB25D3336E007E675A /* ChargeBarUITests */,
+				6D682C9E25D3336D007E675A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6D682C9E25D3336D007E675A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D682C9D25D3336D007E675A /* ChargeBar.app */,
+				6D682CAD25D3336E007E675A /* ChargeBarTests.xctest */,
+				6D682CB825D3336E007E675A /* ChargeBarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D682C9F25D3336D007E675A /* ChargeBar */ = {
+			isa = PBXGroup;
+			children = (
+				6D682CA025D3336D007E675A /* AppDelegate.swift */,
+				6D682CA225D3336E007E675A /* Assets.xcassets */,
+				6D682CA425D3336E007E675A /* MainMenu.xib */,
+				6D682CA725D3336E007E675A /* Info.plist */,
+				6D682CA825D3336E007E675A /* ChargeBar.entitlements */,
+			);
+			path = ChargeBar;
+			sourceTree = "<group>";
+		};
+		6D682CB025D3336E007E675A /* ChargeBarTests */ = {
+			isa = PBXGroup;
+			children = (
+				6D682CB125D3336E007E675A /* ChargeBarTests.swift */,
+				6D682CB325D3336E007E675A /* Info.plist */,
+			);
+			path = ChargeBarTests;
+			sourceTree = "<group>";
+		};
+		6D682CBB25D3336E007E675A /* ChargeBarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6D682CBC25D3336E007E675A /* ChargeBarUITests.swift */,
+				6D682CBE25D3336E007E675A /* Info.plist */,
+			);
+			path = ChargeBarUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6D682C9C25D3336D007E675A /* ChargeBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D682CC125D3336E007E675A /* Build configuration list for PBXNativeTarget "ChargeBar" */;
+			buildPhases = (
+				6D682C9925D3336D007E675A /* Sources */,
+				6D682C9A25D3336D007E675A /* Frameworks */,
+				6D682C9B25D3336D007E675A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChargeBar;
+			productName = ChargeBar;
+			productReference = 6D682C9D25D3336D007E675A /* ChargeBar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6D682CAC25D3336E007E675A /* ChargeBarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D682CC425D3336E007E675A /* Build configuration list for PBXNativeTarget "ChargeBarTests" */;
+			buildPhases = (
+				6D682CA925D3336E007E675A /* Sources */,
+				6D682CAA25D3336E007E675A /* Frameworks */,
+				6D682CAB25D3336E007E675A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D682CAF25D3336E007E675A /* PBXTargetDependency */,
+			);
+			name = ChargeBarTests;
+			productName = ChargeBarTests;
+			productReference = 6D682CAD25D3336E007E675A /* ChargeBarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6D682CB725D3336E007E675A /* ChargeBarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D682CC725D3336E007E675A /* Build configuration list for PBXNativeTarget "ChargeBarUITests" */;
+			buildPhases = (
+				6D682CB425D3336E007E675A /* Sources */,
+				6D682CB525D3336E007E675A /* Frameworks */,
+				6D682CB625D3336E007E675A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D682CBA25D3336E007E675A /* PBXTargetDependency */,
+			);
+			name = ChargeBarUITests;
+			productName = ChargeBarUITests;
+			productReference = 6D682CB825D3336E007E675A /* ChargeBarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6D682C9525D3336D007E675A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					6D682C9C25D3336D007E675A = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					6D682CAC25D3336E007E675A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 6D682C9C25D3336D007E675A;
+					};
+					6D682CB725D3336E007E675A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 6D682C9C25D3336D007E675A;
+					};
+				};
+			};
+			buildConfigurationList = 6D682C9825D3336D007E675A /* Build configuration list for PBXProject "ChargeBar" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6D682C9425D3336D007E675A;
+			productRefGroup = 6D682C9E25D3336D007E675A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D682C9C25D3336D007E675A /* ChargeBar */,
+				6D682CAC25D3336E007E675A /* ChargeBarTests */,
+				6D682CB725D3336E007E675A /* ChargeBarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D682C9B25D3336D007E675A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D682CA325D3336E007E675A /* Assets.xcassets in Resources */,
+				6D682CA625D3336E007E675A /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D682CAB25D3336E007E675A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D682CB625D3336E007E675A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D682C9925D3336D007E675A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D682CA125D3336D007E675A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D682CA925D3336E007E675A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D682CB225D3336E007E675A /* ChargeBarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D682CB425D3336E007E675A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D682CBD25D3336E007E675A /* ChargeBarUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D682CAF25D3336E007E675A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D682C9C25D3336D007E675A /* ChargeBar */;
+			targetProxy = 6D682CAE25D3336E007E675A /* PBXContainerItemProxy */;
+		};
+		6D682CBA25D3336E007E675A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D682C9C25D3336D007E675A /* ChargeBar */;
+			targetProxy = 6D682CB925D3336E007E675A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6D682CA425D3336E007E675A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D682CA525D3336E007E675A /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6D682CBF25D3336E007E675A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6D682CC025D3336E007E675A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		6D682CC225D3336E007E675A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChargeBar/ChargeBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChargeBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.ChargeBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6D682CC325D3336E007E675A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChargeBar/ChargeBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChargeBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.ChargeBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		6D682CC525D3336E007E675A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChargeBarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.ChargeBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChargeBar.app/Contents/MacOS/ChargeBar";
+			};
+			name = Debug;
+		};
+		6D682CC625D3336E007E675A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChargeBarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.ChargeBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChargeBar.app/Contents/MacOS/ChargeBar";
+			};
+			name = Release;
+		};
+		6D682CC825D3336E007E675A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChargeBarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.ChargeBarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ChargeBar;
+			};
+			name = Debug;
+		};
+		6D682CC925D3336E007E675A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChargeBarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.ChargeBarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = ChargeBar;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6D682C9825D3336D007E675A /* Build configuration list for PBXProject "ChargeBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D682CBF25D3336E007E675A /* Debug */,
+				6D682CC025D3336E007E675A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D682CC125D3336E007E675A /* Build configuration list for PBXNativeTarget "ChargeBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D682CC225D3336E007E675A /* Debug */,
+				6D682CC325D3336E007E675A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D682CC425D3336E007E675A /* Build configuration list for PBXNativeTarget "ChargeBarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D682CC525D3336E007E675A /* Debug */,
+				6D682CC625D3336E007E675A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D682CC725D3336E007E675A /* Build configuration list for PBXNativeTarget "ChargeBarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D682CC825D3336E007E675A /* Debug */,
+				6D682CC925D3336E007E675A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6D682C9525D3336D007E675A /* Project object */;
+}
