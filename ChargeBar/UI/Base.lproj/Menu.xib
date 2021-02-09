@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="MenuController" customModule="ChargeBar" customModuleProvider="target">
+            <connections>
+                <outlet property="menu" destination="IZy-8b-bGH" id="Yen-W9-J3O"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu id="IZy-8b-bGH">
+            <items>
+                <menuItem title="Item 1" id="KeO-YT-FNM">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Item 2" id="BTo-25-UYm">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="bLD-QE-T31"/>
+                <menuItem title="Quit ChargeBar" keyEquivalent="q" id="Jt9-Cg-8IT">
+                    <accessibility description="Quit" help="Choose to quit charge bar" identifier="QuitMenuItem"/>
+                    <connections>
+                        <action selector="quitBtnPressed:" target="Voe-Tx-rLC" id="n7P-sX-IYd"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="94" y="-59"/>
+        </menu>
+    </objects>
+</document>
