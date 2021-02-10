@@ -16,13 +16,16 @@ final class MenuController: NSObject, NSMenuDelegate {
   
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
+  lazy var preferencesWindowController: PreferencesWindowController = {
+    return NSStoryboard(name: "Preferences", bundle: nil).instantiateController(withIdentifier: "PreferencesWindowController") as! PreferencesWindowController
+  }()
+  
   // MARK: - Lifecycle
   
   override func awakeFromNib() {
     super.awakeFromNib()
     setupMenuUI()
   }
-  
   
   // MARK: - UI
   
@@ -38,6 +41,12 @@ final class MenuController: NSObject, NSMenuDelegate {
   }
   
   // MARK: - Actions
+  
+  @IBAction func preferencesBtnPressed(_ sender: Any) {
+    UILoger.info("Preferences menu item pressed.")
+    preferencesWindowController.showWindow(sender)
+    NSApp.activate(ignoringOtherApps: true)
+  }
   
   @IBAction func quitBtnPressed(_ sender: Any) {
     UILoger.info("Quit menu item pressed.")

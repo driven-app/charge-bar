@@ -14,6 +14,8 @@
 		6D682CBD25D3336E007E675A /* ChargeBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CBC25D3336E007E675A /* ChargeBarUITests.swift */; };
 		6D682CD425D337EF007E675A /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CD325D337EF007E675A /* MenuController.swift */; };
 		6D682CDF25D33AFD007E675A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CDE25D33AFD007E675A /* Constants.swift */; };
+		6D682CEE25D33D72007E675A /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CED25D33D72007E675A /* Preferences.storyboard */; };
+		6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CF225D33DA5007E675A /* PreferencesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		6D682CBE25D3336E007E675A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D682CD325D337EF007E675A /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		6D682CDE25D33AFD007E675A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6D682CED25D33D72007E675A /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		6D682CF225D33DA5007E675A /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +102,8 @@
 		6D682C9F25D3336D007E675A /* ChargeBar */ = {
 			isa = PBXGroup;
 			children = (
+				6DEA043625D3D09400D32547 /* Lifecycle */,
 				6D682CE925D33B45007E675A /* UI */,
-				6D682CA025D3336D007E675A /* AppDelegate.swift */,
-				6D682CDE25D33AFD007E675A /* Constants.swift */,
 				6D682CA225D3336E007E675A /* Assets.xcassets */,
 				6D682CA725D3336E007E675A /* Info.plist */,
 				6D682CA825D3336E007E675A /* ChargeBar.entitlements */,
@@ -129,10 +132,37 @@
 		6D682CE925D33B45007E675A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				6D682CA425D3336E007E675A /* Menu.xib */,
-				6D682CD325D337EF007E675A /* MenuController.swift */,
+				6DEA043125D3D05500D32547 /* Menu */,
+				6DEA043525D3D07D00D32547 /* Preferences */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		6DEA043125D3D05500D32547 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				6D682CD325D337EF007E675A /* MenuController.swift */,
+				6D682CA425D3336E007E675A /* Menu.xib */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		6DEA043525D3D07D00D32547 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				6D682CF225D33DA5007E675A /* PreferencesController.swift */,
+				6D682CED25D33D72007E675A /* Preferences.storyboard */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		6DEA043625D3D09400D32547 /* Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				6D682CDE25D33AFD007E675A /* Constants.swift */,
+				6D682CA025D3336D007E675A /* AppDelegate.swift */,
+			);
+			path = Lifecycle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D682CEE25D33D72007E675A /* Preferences.storyboard in Resources */,
 				6D682CA325D3336E007E675A /* Assets.xcassets in Resources */,
 				6D682CA625D3336E007E675A /* Menu.xib in Resources */,
 			);
@@ -264,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */,
 				6D682CD425D337EF007E675A /* MenuController.swift in Sources */,
 				6D682CA125D3336D007E675A /* AppDelegate.swift in Sources */,
 				6D682CDF25D33AFD007E675A /* Constants.swift in Sources */,

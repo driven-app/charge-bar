@@ -22,8 +22,10 @@
                 <menuItem title="Item 1" id="KeO-YT-FNM">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Item 2" id="BTo-25-UYm">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Preferences..." keyEquivalent="," id="BTo-25-UYm">
+                    <connections>
+                        <action selector="preferencesBtnPressed:" target="Voe-Tx-rLC" id="ozq-Bv-Puh"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bLD-QE-T31"/>
                 <menuItem title="Quit ChargeBar" keyEquivalent="q" id="Jt9-Cg-8IT">

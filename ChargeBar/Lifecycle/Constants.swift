@@ -9,6 +9,7 @@ import Foundation
 import os.log
 
 let kAppBundleId = "eu.drivenapp.chargebar"
+let kBlankString = ""
 
 // MARK: - Logging
 
