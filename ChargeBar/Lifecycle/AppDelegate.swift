@@ -6,10 +6,13 @@
 //
 
 import Cocoa
+import PorscheConnect
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+  static var porscheConnect: PorscheConnect?
+  
   // MARK: - Lifecycle
   
   func applicationDidFinishLaunching(_ aNotification: Notification) {

@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import PorscheConnect
 
 // MARK: - Window Controller
 
@@ -51,20 +52,27 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
       window.beginSheet(loginSheetWindow, completionHandler: nil)
     }
   }
-
-  // MARK: - Login Sheet Delegate
-
-  func loginSheetWantsToDismiss() {
-    view.window?.endSheet(loginSheetWindow)
-  }
   
+  // MARK: - Login Sheet Delegate
+  
+  func loginSheetWantsToDismiss(username: String?, password: String?) {
+    view.window?.endSheet(loginSheetWindow)
+    
+    guard let username = username, let password = password else {
+      return
+    }
+    
+    AppDelegate.porscheConnect = PorscheConnect(username: username, password: password)
+    AppDelegate.porscheConnect!.vehicles() { result in
+      print(result)
+    }
+  }
 }
-
 
 // MARK: -  Delegate Protocols
 
 protocol LoginSheetDelegate {
-  func loginSheetWantsToDismiss()
+  func loginSheetWantsToDismiss(username: String?, password: String?)
 }
 
 // MARK: - Station Detail Sheet Window
@@ -81,12 +89,12 @@ class LoginSheetWindow: NSWindow {
   
   @IBAction func okayBtnPressed(_ sender: Any) {
     UILogger.info("Ok button pressed on login detail sheet.")
-
+    
     if usernameTextField.stringValue.isEmpty || passwordTextField.stringValue.isEmpty {
       return
     }
     
-    dismissSheet()
+    dismissSheet(username: usernameTextField.stringValue, password: passwordTextField.stringValue)
   }
   
   @IBAction func cancelBtnPressed(_ sender: Any) {
@@ -97,10 +105,7 @@ class LoginSheetWindow: NSWindow {
   
   // MARK: - Private
   
-  private func dismissSheet() {
-    usernameTextField.stringValue = kBlankString
-    passwordTextField.stringValue = kBlankString
-    
-    loginDelegate?.loginSheetWantsToDismiss()
+  private func dismissSheet(username: String? = nil, password: String? = nil) {
+    loginDelegate?.loginSheetWantsToDismiss(username: username, password: password)
   }
 }

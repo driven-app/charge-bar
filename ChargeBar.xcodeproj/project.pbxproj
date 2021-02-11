@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		6D682CDF25D33AFD007E675A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CDE25D33AFD007E675A /* Constants.swift */; };
 		6D682CEE25D33D72007E675A /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CED25D33D72007E675A /* Preferences.storyboard */; };
 		6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CF225D33DA5007E675A /* PreferencesController.swift */; };
+		6DD40BF325D5D19F0083828B /* PorscheConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 6DD40BF225D5D19F0083828B /* PorscheConnect */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DD40BF325D5D19F0083828B /* PorscheConnect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +183,9 @@
 			dependencies = (
 			);
 			name = ChargeBar;
+			packageProductDependencies = (
+				6DD40BF225D5D19F0083828B /* PorscheConnect */,
+			);
 			productName = ChargeBar;
 			productReference = 6D682C9D25D3336D007E675A /* ChargeBar.app */;
 			productType = "com.apple.product-type.application";
@@ -252,6 +257,9 @@
 				Base,
 			);
 			mainGroup = 6D682C9425D3336D007E675A;
+			packageReferences = (
+				6DD40BF125D5D19F0083828B /* XCRemoteSwiftPackageReference "porsche-connect" */,
+			);
 			productRefGroup = 6D682C9E25D3336D007E675A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -618,6 +626,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6DD40BF125D5D19F0083828B /* XCRemoteSwiftPackageReference "porsche-connect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/driven-app/porsche-connect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6DD40BF225D5D19F0083828B /* PorscheConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DD40BF125D5D19F0083828B /* XCRemoteSwiftPackageReference "porsche-connect" */;
+			productName = PorscheConnect;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6D682C9525D3336D007E675A /* Project object */;
 }
