@@ -13,6 +13,5 @@ let kBlankString = ""
 
 // MARK: - Logging
 
-let LifecycleLoger = Logger(subsystem: kAppBundleId, category: "Lifecycle")
-let CoreDataLoger = Logger(subsystem: kAppBundleId, category: "CoreData")
-let UILoger = Logger(subsystem: kAppBundleId, category: "UI")
+let LifecycleLogger = Logger(subsystem: kAppBundleId, category: "Lifecycle")
+let UILogger = Logger(subsystem: kAppBundleId, category: "UI")

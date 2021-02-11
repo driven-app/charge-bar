@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   private func preventMultipleAppsFromRunning() {
     if NSRunningApplication.runningApplications(withBundleIdentifier: kAppBundleId).count > 1 {
-      LifecycleLoger.error("ChargeBar is already running, terminating this instance.")
+      LifecycleLogger.error("ChargeBar is already running, terminating this instance.")
       NSApp.terminate(self)
     }
   }
