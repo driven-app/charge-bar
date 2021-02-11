@@ -10,15 +10,20 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+  // MARK: - Lifecycle
+  
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    // Insert code here to initialize your application
+    preventMultipleAppsFromRunning()
+
   }
 
-  func applicationWillTerminate(_ aNotification: Notification) {
-    // Insert code here to tear down your application
+  // MARK: - Startup
+  
+  private func preventMultipleAppsFromRunning() {
+    if NSRunningApplication.runningApplications(withBundleIdentifier: kAppBundleId).count > 1 {
+      LifecycleLoger.error("ChargeBar is already running, terminating this instance.")
+      NSApp.terminate(self)
+    }
   }
-
 
 }
-
