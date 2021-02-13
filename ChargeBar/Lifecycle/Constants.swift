@@ -8,8 +8,15 @@
 import Foundation
 import os.log
 
+// MARK: - App
+
 let kAppBundleId = "eu.drivenapp.chargebar"
 let kBlankString = ""
+
+// MARK: - Keychain
+
+let kUsernameKeyForKeychain = "username"
+let kPasswordKeyForKeychain = "password"
 
 // MARK: - Logging
 

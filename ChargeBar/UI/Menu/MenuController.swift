@@ -7,6 +7,8 @@
 
 import Foundation
 import Cocoa
+import KeychainSwift
+import PorscheConnect
 
 final class MenuController: NSObject, NSMenuDelegate {
   
@@ -24,20 +26,37 @@ final class MenuController: NSObject, NSMenuDelegate {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    preventMultipleAppsFromRunning()
     setupMenuUI()
+//    initPorscheConnect()
   }
   
-  // MARK: - UI
+  // MARK: - Startup
   
   private func setupMenuUI() {
     if let button = statusItem.button {
-      button.image = NSImage(systemSymbolName: "bolt.car", accessibilityDescription: "")
+      button.image = NSImage(systemSymbolName: "bolt.car", accessibilityDescription: kBlankString)
     }
     
     statusItem.isVisible = true
     statusItem.behavior = .terminationOnRemoval
     statusItem.autosaveName = kAppBundleId
     statusItem.menu = menu
+  }
+  
+  private func preventMultipleAppsFromRunning() {
+    if NSRunningApplication.runningApplications(withBundleIdentifier: kAppBundleId).count > 1 {
+      LifecycleLogger.error("ChargeBar is already running, terminating this instance.")
+      NSApp.terminate(self)
+    }
+  }
+  
+  private func initPorscheConnect() {
+    let keychain = KeychainSwift()
+    guard let username = keychain.get(kUsernameKeyForKeychain), let password = keychain.get(kPasswordKeyForKeychain) else { return }
+    
+    AppDelegate.porscheConnect = PorscheConnect(username: username, password: password)
+    LifecycleLogger.info("Porsche Connect init from existing keychain")
   }
   
   // MARK: - Actions
@@ -52,4 +71,5 @@ final class MenuController: NSObject, NSMenuDelegate {
     UILogger.info("Quit menu item pressed.")
     NSApp.terminate(sender)
   }
+  
 }

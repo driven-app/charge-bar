@@ -7,6 +7,7 @@
 
 import Cocoa
 import PorscheConnect
+import KeychainSwift
 
 // MARK: - Window Controller
 
@@ -33,7 +34,9 @@ final class PreferencesWindowController: NSWindowController {
 class PreferencesViewController: NSViewController, LoginSheetDelegate {
   
   // MARK: - Properties
-  
+  @IBOutlet var accountStatusTextField: NSTextField!
+  @IBOutlet var progressIndicator: NSProgressIndicator!
+  @IBOutlet var loginLogoutBtn: NSButton!
   @IBOutlet var loginSheetWindow: LoginSheetWindow!
   
   // MARK: - Lifecycle
@@ -62,10 +65,40 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
       return
     }
     
+    accountStatusTextField.isHidden = true
+    progressIndicator.startAnimation(nil)
+    
     AppDelegate.porscheConnect = PorscheConnect(username: username, password: password)
     AppDelegate.porscheConnect!.vehicles() { result in
-      print(result)
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let (vehicles, _)):
+          self.handleLoginSuccess(username: username, password: password, vehicles: vehicles)
+        case .failure(_):
+          self.handleLoginFailure()
+        }
+        
+        self.progressIndicator.stopAnimation(nil)
+        self.accountStatusTextField.isHidden = false
+      }
     }
+  }
+  
+  // MARK: - Private Functions
+  
+  private func handleLoginSuccess(username: String, password: String, vehicles: [Vehicle]?) {
+    let keychain = KeychainSwift()
+    keychain.set(username, forKey: kUsernameKeyForKeychain)
+    keychain.set(password, forKey: kPasswordKeyForKeychain)
+    
+    accountStatusTextField.textColor = .systemGreen
+    accountStatusTextField.stringValue = NSLocalizedString("Connected", comment: kBlankString)
+    loginLogoutBtn.title = NSLocalizedString("Logout", comment: kBlankString)
+  }
+  
+  private func handleLoginFailure() {
+    accountStatusTextField.textColor = .systemRed
+    accountStatusTextField.stringValue = NSLocalizedString("Not Connected", comment: kBlankString)
   }
 }
 
