@@ -3,15 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D43647925D7BD3500A516E7 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6D43647825D7BD3500A516E7 /* KeychainSwift */; };
 		6D682CA125D3336D007E675A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CA025D3336D007E675A /* AppDelegate.swift */; };
 		6D682CA325D3336E007E675A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CA225D3336E007E675A /* Assets.xcassets */; };
-		6D682CA625D3336E007E675A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CA425D3336E007E675A /* MainMenu.xib */; };
+		6D682CA625D3336E007E675A /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CA425D3336E007E675A /* Menu.xib */; };
 		6D682CB225D3336E007E675A /* ChargeBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CB125D3336E007E675A /* ChargeBarTests.swift */; };
 		6D682CBD25D3336E007E675A /* ChargeBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CBC25D3336E007E675A /* ChargeBarUITests.swift */; };
+		6D682CD425D337EF007E675A /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CD325D337EF007E675A /* MenuController.swift */; };
+		6D682CDF25D33AFD007E675A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CDE25D33AFD007E675A /* Constants.swift */; };
+		6D682CEE25D33D72007E675A /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CED25D33D72007E675A /* Preferences.storyboard */; };
+		6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CF225D33DA5007E675A /* PreferencesController.swift */; };
+		6DD40BF325D5D19F0083828B /* PorscheConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 6DD40BF225D5D19F0083828B /* PorscheConnect */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +41,7 @@
 		6D682C9D25D3336D007E675A /* ChargeBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChargeBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D682CA025D3336D007E675A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D682CA225D3336E007E675A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6D682CA525D3336E007E675A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6D682CA525D3336E007E675A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Menu.xib; sourceTree = "<group>"; };
 		6D682CA725D3336E007E675A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D682CA825D3336E007E675A /* ChargeBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChargeBar.entitlements; sourceTree = "<group>"; };
 		6D682CAD25D3336E007E675A /* ChargeBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChargeBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +50,10 @@
 		6D682CB825D3336E007E675A /* ChargeBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChargeBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D682CBC25D3336E007E675A /* ChargeBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeBarUITests.swift; sourceTree = "<group>"; };
 		6D682CBE25D3336E007E675A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D682CD325D337EF007E675A /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		6D682CDE25D33AFD007E675A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6D682CED25D33D72007E675A /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		6D682CF225D33DA5007E675A /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D43647925D7BD3500A516E7 /* KeychainSwift in Frameworks */,
+				6DD40BF325D5D19F0083828B /* PorscheConnect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,9 +106,9 @@
 		6D682C9F25D3336D007E675A /* ChargeBar */ = {
 			isa = PBXGroup;
 			children = (
-				6D682CA025D3336D007E675A /* AppDelegate.swift */,
+				6DEA043625D3D09400D32547 /* Lifecycle */,
+				6D682CE925D33B45007E675A /* UI */,
 				6D682CA225D3336E007E675A /* Assets.xcassets */,
-				6D682CA425D3336E007E675A /* MainMenu.xib */,
 				6D682CA725D3336E007E675A /* Info.plist */,
 				6D682CA825D3336E007E675A /* ChargeBar.entitlements */,
 			);
@@ -121,6 +133,42 @@
 			path = ChargeBarUITests;
 			sourceTree = "<group>";
 		};
+		6D682CE925D33B45007E675A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6DEA043125D3D05500D32547 /* Menu */,
+				6DEA043525D3D07D00D32547 /* Preferences */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6DEA043125D3D05500D32547 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				6D682CD325D337EF007E675A /* MenuController.swift */,
+				6D682CA425D3336E007E675A /* Menu.xib */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		6DEA043525D3D07D00D32547 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				6D682CF225D33DA5007E675A /* PreferencesController.swift */,
+				6D682CED25D33D72007E675A /* Preferences.storyboard */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		6DEA043625D3D09400D32547 /* Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				6D682CDE25D33AFD007E675A /* Constants.swift */,
+				6D682CA025D3336D007E675A /* AppDelegate.swift */,
+			);
+			path = Lifecycle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +185,10 @@
 			dependencies = (
 			);
 			name = ChargeBar;
+			packageProductDependencies = (
+				6DD40BF225D5D19F0083828B /* PorscheConnect */,
+				6D43647825D7BD3500A516E7 /* KeychainSwift */,
+			);
 			productName = ChargeBar;
 			productReference = 6D682C9D25D3336D007E675A /* ChargeBar.app */;
 			productType = "com.apple.product-type.application";
@@ -208,6 +260,10 @@
 				Base,
 			);
 			mainGroup = 6D682C9425D3336D007E675A;
+			packageReferences = (
+				6DD40BF125D5D19F0083828B /* XCRemoteSwiftPackageReference "porsche-connect" */,
+				6D43647725D7BD3500A516E7 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			productRefGroup = 6D682C9E25D3336D007E675A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -224,8 +280,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D682CEE25D33D72007E675A /* Preferences.storyboard in Resources */,
 				6D682CA325D3336E007E675A /* Assets.xcassets in Resources */,
-				6D682CA625D3336E007E675A /* MainMenu.xib in Resources */,
+				6D682CA625D3336E007E675A /* Menu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +307,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */,
+				6D682CD425D337EF007E675A /* MenuController.swift in Sources */,
 				6D682CA125D3336D007E675A /* AppDelegate.swift in Sources */,
+				6D682CDF25D33AFD007E675A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,12 +346,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6D682CA425D3336E007E675A /* MainMenu.xib */ = {
+		6D682CA425D3336E007E675A /* Menu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6D682CA525D3336E007E675A /* Base */,
 			);
-			name = MainMenu.xib;
+			name = Menu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -425,7 +485,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.ChargeBar;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.chargebar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -444,7 +504,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.ChargeBar;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.drivenapp.chargebar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -570,6 +630,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6D43647725D7BD3500A516E7 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
+		6DD40BF125D5D19F0083828B /* XCRemoteSwiftPackageReference "porsche-connect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/driven-app/porsche-connect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6D43647825D7BD3500A516E7 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D43647725D7BD3500A516E7 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		6DD40BF225D5D19F0083828B /* PorscheConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DD40BF125D5D19F0083828B /* XCRemoteSwiftPackageReference "porsche-connect" */;
+			productName = PorscheConnect;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6D682C9525D3336D007E675A /* Project object */;
 }
