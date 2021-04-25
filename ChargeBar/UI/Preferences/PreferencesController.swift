@@ -41,13 +41,32 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   @IBOutlet var vehiclesTableView: NSTableView!
   @IBOutlet var loginSheetWindow: LoginSheetWindow!
   
-  var vehicles: [Vehicle] = []
+  private var isConnected: Bool { AppDelegate.porscheConnect != nil }
+  private var vehicles: [Vehicle] = []
+  
+  // MARK: - Dynamic Properties
+  @objc private dynamic var accountStatusText: String {
+    return NSLocalizedString(isConnected ? "Connected" : "Not Connected", comment: kBlankString)
+  }
+  
+  @objc private dynamic var accountStatusTextColor: NSColor {
+    return isConnected ? .systemGreen : .systemRed
+  }
+  
+  @objc private dynamic var loginLogoutBtnText: String {
+    return NSLocalizedString(isConnected ? "Logout" : "Login ...", comment: kBlankString)
+  }
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     loginSheetWindow.loginDelegate = self
+  }
+  
+  override func viewWillAppear() {
+    super.viewWillAppear()
+//    guard let porscheConnect = AppDelegate.porscheConnect else { return }
   }
   
   // MARK: - Actions
@@ -99,16 +118,22 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
       self.vehicles = vehicles
     }
     
-    accountStatusTextField.textColor = .systemGreen
-    accountStatusTextField.stringValue = NSLocalizedString("Connected", comment: kBlankString)
-    loginLogoutBtn.title = NSLocalizedString("Logout", comment: kBlankString)
+//    loginLogoutBtn.title = NSLocalizedString("Logout", comment: kBlankString)
     
     vehiclesTableView.reloadData()
+    forceUpdateBindings()
   }
   
   private func handleLoginFailure() {
-    accountStatusTextField.textColor = .systemRed
-    accountStatusTextField.stringValue = NSLocalizedString("Not Connected", comment: kBlankString)
+    AppDelegate.porscheConnect = nil
+    forceUpdateBindings()
+  }
+  
+  private func forceUpdateBindings() {
+    ["accountStatusText", "accountStatusTextColor", "loginLogoutBtnText"].forEach { (key) in
+      self.willChangeValue(forKey: key)
+      self.didChangeValue(forKey: key)
+    }
   }
 }
 
