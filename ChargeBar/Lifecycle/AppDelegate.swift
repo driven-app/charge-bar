@@ -14,5 +14,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   // MARK: - Properties
   
   static var porscheConnect: PorscheConnect?
-  
+  static let persistenceManager = PersistenceManager.shared
 }

@@ -28,7 +28,15 @@ final class MenuController: NSObject, NSMenuDelegate {
     super.awakeFromNib()
     preventMultipleAppsFromRunning()
     setupMenuUI()
-//    initPorscheConnect()
+    
+    guard ProcessInfo.processInfo.environment["TEST_MODE"] == nil else {
+      runInTestMode()
+      return
+    }
+    
+    initPorscheConnect()
+    
+    LifecycleLogger.info("Launched.")
   }
   
   // MARK: - Startup
@@ -70,6 +78,12 @@ final class MenuController: NSObject, NSMenuDelegate {
   @IBAction func quitBtnPressed(_ sender: Any) {
     UILogger.info("Quit menu item pressed.")
     NSApp.terminate(sender)
+  }
+  
+  // MARK: - Test Support
+  
+  private func runInTestMode() {
+    LifecycleLogger.info("Running in test mode.")
   }
   
 }

@@ -17,6 +17,12 @@
 		6D682CDF25D33AFD007E675A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CDE25D33AFD007E675A /* Constants.swift */; };
 		6D682CEE25D33D72007E675A /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CED25D33D72007E675A /* Preferences.storyboard */; };
 		6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CF225D33DA5007E675A /* PreferencesController.swift */; };
+		6DC16F212635E86B00FCCF55 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F202635E86B00FCCF55 /* PersistenceManager.swift */; };
+		6DC16F262635E94E00FCCF55 /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F252635E94E00FCCF55 /* PersistenceManagerTests.swift */; };
+		6DC16F2B2635E99E00FCCF55 /* BaseXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F2A2635E99E00FCCF55 /* BaseXCTestCase.swift */; };
+		6DC16F342635EAAF00FCCF55 /* ChargeBar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F322635EAAF00FCCF55 /* ChargeBar.xcdatamodeld */; };
+		6DC16F3A2635EAEA00FCCF55 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F392635EAEA00FCCF55 /* Base.swift */; };
+		6DC16F422635EFF200FCCF55 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F412635EFF200FCCF55 /* Models.swift */; };
 		6DD40BF325D5D19F0083828B /* PorscheConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 6DD40BF225D5D19F0083828B /* PorscheConnect */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +60,12 @@
 		6D682CDE25D33AFD007E675A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6D682CED25D33D72007E675A /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		6D682CF225D33DA5007E675A /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		6DC16F202635E86B00FCCF55 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		6DC16F252635E94E00FCCF55 /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
+		6DC16F2A2635E99E00FCCF55 /* BaseXCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXCTestCase.swift; sourceTree = "<group>"; };
+		6DC16F332635EAAF00FCCF55 /* ChargeBar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChargeBar.xcdatamodel; sourceTree = "<group>"; };
+		6DC16F392635EAEA00FCCF55 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		6DC16F412635EFF200FCCF55 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +120,7 @@
 			children = (
 				6DEA043625D3D09400D32547 /* Lifecycle */,
 				6D682CE925D33B45007E675A /* UI */,
+				6DC16F1F2635E84A00FCCF55 /* Data */,
 				6D682CA225D3336E007E675A /* Assets.xcassets */,
 				6D682CA725D3336E007E675A /* Info.plist */,
 				6D682CA825D3336E007E675A /* ChargeBar.entitlements */,
@@ -118,7 +131,9 @@
 		6D682CB025D3336E007E675A /* ChargeBarTests */ = {
 			isa = PBXGroup;
 			children = (
+				6DC16F2A2635E99E00FCCF55 /* BaseXCTestCase.swift */,
 				6D682CB125D3336E007E675A /* ChargeBarTests.swift */,
+				6DC16F252635E94E00FCCF55 /* PersistenceManagerTests.swift */,
 				6D682CB325D3336E007E675A /* Info.plist */,
 			);
 			path = ChargeBarTests;
@@ -140,6 +155,25 @@
 				6DEA043525D3D07D00D32547 /* Preferences */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		6DC16F1F2635E84A00FCCF55 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6DC16F382635EADE00FCCF55 /* Managed Objects */,
+				6DC16F202635E86B00FCCF55 /* PersistenceManager.swift */,
+				6DC16F322635EAAF00FCCF55 /* ChargeBar.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		6DC16F382635EADE00FCCF55 /* Managed Objects */ = {
+			isa = PBXGroup;
+			children = (
+				6DC16F392635EAEA00FCCF55 /* Base.swift */,
+				6DC16F412635EFF200FCCF55 /* Models.swift */,
+			);
+			path = "Managed Objects";
 			sourceTree = "<group>";
 		};
 		6DEA043125D3D05500D32547 /* Menu */ = {
@@ -308,8 +342,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */,
+				6DC16F212635E86B00FCCF55 /* PersistenceManager.swift in Sources */,
 				6D682CD425D337EF007E675A /* MenuController.swift in Sources */,
+				6DC16F422635EFF200FCCF55 /* Models.swift in Sources */,
+				6DC16F342635EAAF00FCCF55 /* ChargeBar.xcdatamodeld in Sources */,
 				6D682CA125D3336D007E675A /* AppDelegate.swift in Sources */,
+				6DC16F3A2635EAEA00FCCF55 /* Base.swift in Sources */,
 				6D682CDF25D33AFD007E675A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +357,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D682CB225D3336E007E675A /* ChargeBarTests.swift in Sources */,
+				6DC16F2B2635E99E00FCCF55 /* BaseXCTestCase.swift in Sources */,
+				6DC16F262635E94E00FCCF55 /* PersistenceManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +702,19 @@
 			productName = PorscheConnect;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		6DC16F322635EAAF00FCCF55 /* ChargeBar.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6DC16F332635EAAF00FCCF55 /* ChargeBar.xcdatamodel */,
+			);
+			currentVersion = 6DC16F332635EAAF00FCCF55 /* ChargeBar.xcdatamodel */;
+			path = ChargeBar.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6D682C9525D3336D007E675A /* Project object */;
 }

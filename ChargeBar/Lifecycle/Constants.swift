@@ -22,3 +22,4 @@ let kPasswordKeyForKeychain = "Porsche Connect Password"
 
 let LifecycleLogger = Logger(subsystem: kAppBundleId, category: "Lifecycle")
 let UILogger = Logger(subsystem: kAppBundleId, category: "UI")
+let CoreDataLogger = Logger(subsystem: kAppBundleId, category: "CoreData")

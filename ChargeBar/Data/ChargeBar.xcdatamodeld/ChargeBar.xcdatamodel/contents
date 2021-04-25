@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="VehicleEntity" representedClassName="VehicleEntity" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="licensePlate" optional="YES" attributeType="String"/>
+        <attribute name="modelDescription" optional="YES" attributeType="String"/>
+        <attribute name="modelType" optional="YES" attributeType="String"/>
+        <attribute name="modelYear" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="vin" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="VehicleEntity" positionX="-63" positionY="-18" width="128" height="149"/>
+    </elements>
+</model>

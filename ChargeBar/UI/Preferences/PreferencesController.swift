@@ -45,6 +45,7 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   private var vehicles: [Vehicle] = []
   
   // MARK: - Dynamic Properties
+  
   @objc private dynamic var accountStatusText: String {
     return NSLocalizedString(isConnected ? "Connected" : "Not Connected", comment: kBlankString)
   }
@@ -66,7 +67,6 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   
   override func viewWillAppear() {
     super.viewWillAppear()
-//    guard let porscheConnect = AppDelegate.porscheConnect else { return }
   }
   
   // MARK: - Actions
@@ -118,8 +118,6 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
       self.vehicles = vehicles
     }
     
-//    loginLogoutBtn.title = NSLocalizedString("Logout", comment: kBlankString)
-    
     vehiclesTableView.reloadData()
     forceUpdateBindings()
   }
@@ -130,7 +128,7 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   }
   
   private func forceUpdateBindings() {
-    ["accountStatusText", "accountStatusTextColor", "loginLogoutBtnText"].forEach { (key) in
+    ["accountStatusText", "accountStatusTextColor", "loginLogoutBtnText"].forEach { key in
       self.willChangeValue(forKey: key)
       self.didChangeValue(forKey: key)
     }
