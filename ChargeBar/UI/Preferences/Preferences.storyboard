@@ -63,7 +63,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="116" minWidth="40" maxWidth="1000" id="JRs-KK-Krc">
+                                                <tableColumn identifier="Name" width="116" minWidth="40" maxWidth="1000" id="JRs-KK-Krc">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -99,7 +99,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="104" minWidth="40" maxWidth="1000" id="7sX-VT-4nT">
+                                                <tableColumn identifier="Model" width="104" minWidth="40" maxWidth="1000" id="7sX-VT-4nT">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Model">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -135,7 +135,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="66" minWidth="10" maxWidth="3.4028234663852886e+38" id="rej-Y1-LZL">
+                                                <tableColumn identifier="Year" width="66" minWidth="10" maxWidth="3.4028234663852886e+38" id="rej-Y1-LZL">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Year">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -167,7 +167,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="127" minWidth="10" maxWidth="3.4028234663852886e+38" id="g9Z-Fb-tQf">
+                                                <tableColumn identifier="VIN" width="127" minWidth="10" maxWidth="3.4028234663852886e+38" id="g9Z-Fb-tQf">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="VIN">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -201,6 +201,10 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <accessibility description="Vehicles" help="List of vehicles in your My Porsche account" identifier="VehiclesTable"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="dLl-eN-JlX" id="OaX-5n-5fO"/>
+                                                <outlet property="delegate" destination="dLl-eN-JlX" id="xsc-e6-2H3"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -248,6 +252,7 @@
                         <outlet property="loginLogoutBtn" destination="stz-Kd-djw" id="NeR-R6-Z2g"/>
                         <outlet property="loginSheetWindow" destination="v7r-35-a5K" id="yxL-v6-vtN"/>
                         <outlet property="progressIndicator" destination="VgH-tl-8Mo" id="924-gU-OOJ"/>
+                        <outlet property="vehiclesTableView" destination="3Ta-hr-evv" id="Lti-ev-ef7"/>
                     </connections>
                 </viewController>
                 <customObject id="AVV-34-6UR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -305,6 +310,9 @@
                                 <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i4a-0S-BC4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="okayBtnPressed:" target="v7r-35-a5K" id="iUw-zA-RKa"/>

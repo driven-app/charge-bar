@@ -15,8 +15,8 @@ let kBlankString = ""
 
 // MARK: - Keychain
 
-let kUsernameKeyForKeychain = "username"
-let kPasswordKeyForKeychain = "password"
+let kUsernameKeyForKeychain = "Porsche Connect Username"
+let kPasswordKeyForKeychain = "Porsche Connect Password"
 
 // MARK: - Logging
 

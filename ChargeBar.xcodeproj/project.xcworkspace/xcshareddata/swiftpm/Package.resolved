@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/driven-app/porsche-connect",
         "state": {
           "branch": null,
-          "revision": "e234dfabb33f7dbe7c55d3bcd2154b520075de5b",
-          "version": "0.1.1"
+          "revision": "63fda0f912dd53166e63313cfa4fbd48b5cd681b",
+          "version": "0.1.4"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/apple/swift-argument-parser",
         "state": {
           "branch": null,
-          "revision": "9564d61b08a5335ae0a36f789a7d71493eacadfc",
-          "version": "0.3.2"
+          "revision": "47bd06ebeff8146ecd0020809e186218b46f465f",
+          "version": "0.4.2"
         }
       }
     ]

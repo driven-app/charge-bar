@@ -34,10 +34,14 @@ final class PreferencesWindowController: NSWindowController {
 class PreferencesViewController: NSViewController, LoginSheetDelegate {
   
   // MARK: - Properties
+  
   @IBOutlet var accountStatusTextField: NSTextField!
   @IBOutlet var progressIndicator: NSProgressIndicator!
   @IBOutlet var loginLogoutBtn: NSButton!
+  @IBOutlet var vehiclesTableView: NSTableView!
   @IBOutlet var loginSheetWindow: LoginSheetWindow!
+  
+  var vehicles: [Vehicle] = []
   
   // MARK: - Lifecycle
   
@@ -91,14 +95,47 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
     keychain.set(username, forKey: kUsernameKeyForKeychain)
     keychain.set(password, forKey: kPasswordKeyForKeychain)
     
+    if let vehicles = vehicles {
+      self.vehicles = vehicles
+    }
+    
     accountStatusTextField.textColor = .systemGreen
     accountStatusTextField.stringValue = NSLocalizedString("Connected", comment: kBlankString)
     loginLogoutBtn.title = NSLocalizedString("Logout", comment: kBlankString)
+    
+    vehiclesTableView.reloadData()
   }
   
   private func handleLoginFailure() {
     accountStatusTextField.textColor = .systemRed
     accountStatusTextField.stringValue = NSLocalizedString("Not Connected", comment: kBlankString)
+  }
+}
+
+// MARK: - Table View Delegate & Datasource
+
+extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate  {
+  func numberOfRows(in tableView: NSTableView) -> Int {
+    return vehicles.count
+  }
+  
+  func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    let vehicle = vehicles[row]
+    
+    guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NSTableCellView else { return nil }
+    
+    switch tableColumn?.identifier.rawValue {
+    case "Name":
+      cell.textField?.stringValue = vehicle.modelDescription
+    case "Model":
+      cell.textField?.stringValue = vehicle.modelType
+    case "Year":
+      cell.textField?.stringValue = vehicle.modelYear
+    default:
+      cell.textField?.stringValue = vehicle.vin
+    }
+    
+    return cell
   }
 }
 
