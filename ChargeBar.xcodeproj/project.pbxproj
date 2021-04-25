@@ -21,8 +21,6 @@
 		6DC16F262635E94E00FCCF55 /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F252635E94E00FCCF55 /* PersistenceManagerTests.swift */; };
 		6DC16F2B2635E99E00FCCF55 /* BaseXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F2A2635E99E00FCCF55 /* BaseXCTestCase.swift */; };
 		6DC16F342635EAAF00FCCF55 /* ChargeBar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F322635EAAF00FCCF55 /* ChargeBar.xcdatamodeld */; };
-		6DC16F3A2635EAEA00FCCF55 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F392635EAEA00FCCF55 /* Base.swift */; };
-		6DC16F422635EFF200FCCF55 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F412635EFF200FCCF55 /* Models.swift */; };
 		6DC16F4A2635F70600FCCF55 /* BaseUITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC16F492635F70600FCCF55 /* BaseUITestCase.swift */; };
 		6DD40BF325D5D19F0083828B /* PorscheConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 6DD40BF225D5D19F0083828B /* PorscheConnect */; };
 /* End PBXBuildFile section */
@@ -65,8 +63,6 @@
 		6DC16F252635E94E00FCCF55 /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
 		6DC16F2A2635E99E00FCCF55 /* BaseXCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXCTestCase.swift; sourceTree = "<group>"; };
 		6DC16F332635EAAF00FCCF55 /* ChargeBar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChargeBar.xcdatamodel; sourceTree = "<group>"; };
-		6DC16F392635EAEA00FCCF55 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
-		6DC16F412635EFF200FCCF55 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		6DC16F492635F70600FCCF55 /* BaseUITestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUITestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,20 +159,10 @@
 		6DC16F1F2635E84A00FCCF55 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				6DC16F382635EADE00FCCF55 /* Managed Objects */,
 				6DC16F202635E86B00FCCF55 /* PersistenceManager.swift */,
 				6DC16F322635EAAF00FCCF55 /* ChargeBar.xcdatamodeld */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		6DC16F382635EADE00FCCF55 /* Managed Objects */ = {
-			isa = PBXGroup;
-			children = (
-				6DC16F392635EAEA00FCCF55 /* Base.swift */,
-				6DC16F412635EFF200FCCF55 /* Models.swift */,
-			);
-			path = "Managed Objects";
 			sourceTree = "<group>";
 		};
 		6DEA043125D3D05500D32547 /* Menu */ = {
@@ -347,10 +333,8 @@
 				6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */,
 				6DC16F212635E86B00FCCF55 /* PersistenceManager.swift in Sources */,
 				6D682CD425D337EF007E675A /* MenuController.swift in Sources */,
-				6DC16F422635EFF200FCCF55 /* Models.swift in Sources */,
 				6DC16F342635EAAF00FCCF55 /* ChargeBar.xcdatamodeld in Sources */,
 				6D682CA125D3336D007E675A /* AppDelegate.swift in Sources */,
-				6DC16F3A2635EAEA00FCCF55 /* Base.swift in Sources */,
 				6D682CDF25D33AFD007E675A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

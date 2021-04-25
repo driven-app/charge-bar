@@ -34,7 +34,7 @@ final class MenuController: NSObject, NSMenuDelegate {
       return
     }
     
-    initPorscheConnect()
+//    initPorscheConnect()
     
     LifecycleLogger.info("Launched.")
   }
@@ -60,11 +60,11 @@ final class MenuController: NSObject, NSMenuDelegate {
   }
   
   private func initPorscheConnect() {
-    let keychain = KeychainSwift()
-    guard let username = keychain.get(kUsernameKeyForKeychain), let password = keychain.get(kPasswordKeyForKeychain) else { return }
-    
-    AppDelegate.porscheConnect = PorscheConnect(username: username, password: password)
-    LifecycleLogger.info("Porsche Connect init from existing keychain")
+//    let keychain = KeychainSwift()
+//    guard let username = keychain.get(kUsernameKeyForKeychain), let password = keychain.get(kPasswordKeyForKeychain) else { return }
+//    
+//    AppDelegate.porscheConnect = PorscheConnect(username: username, password: password)
+//    LifecycleLogger.info("Porsche Connect init from existing keychain")
   }
   
   // MARK: - Actions

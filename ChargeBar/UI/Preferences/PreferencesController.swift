@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import CoreData
 import PorscheConnect
 import KeychainSwift
 
@@ -39,12 +40,14 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   @IBOutlet var progressIndicator: NSProgressIndicator!
   @IBOutlet var loginLogoutBtn: NSButton!
   @IBOutlet var vehiclesTableView: NSTableView!
+  @IBOutlet var vehiclesArrayController: NSArrayController!
   @IBOutlet var loginSheetWindow: LoginSheetWindow!
   
   private var isConnected: Bool { AppDelegate.porscheConnect != nil }
-  private var vehicles: [Vehicle] = []
   
   // MARK: - Dynamic Properties
+  
+  @objc private dynamic var viewContext: NSManagedObjectContext = PersistenceManager.shared.container.viewContext
   
   @objc private dynamic var accountStatusText: String {
     return NSLocalizedString(isConnected ? "Connected" : "Not Connected", comment: kBlankString)
@@ -63,10 +66,6 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     loginSheetWindow.loginDelegate = self
-  }
-  
-  override func viewWillAppear() {
-    super.viewWillAppear()
   }
   
   // MARK: - Actions
@@ -111,14 +110,28 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   
   private func handleLoginSuccess(username: String, password: String, vehicles: [Vehicle]?) {
     let keychain = KeychainSwift()
-    keychain.set(username, forKey: kUsernameKeyForKeychain)
     keychain.set(password, forKey: kPasswordKeyForKeychain)
     
+    AppDelegate.persistenceManager.deleteAll(entityName: AccountMO.className(), context: viewContext)
+    let accountMO = AccountMO(context: viewContext)
+    accountMO.username = username
+    
     if let vehicles = vehicles {
-      self.vehicles = vehicles
+      vehicles.forEach { vehicle in
+        let vehicleMO = VehicleMO(context: viewContext)
+        vehicleMO.modelDescription = vehicle.modelDescription
+        vehicleMO.modelYear = vehicle.modelYear
+        vehicleMO.modelType = vehicle.modelType
+        vehicleMO.vin = vehicle.vin
+        if let attributes = vehicle.attributes, let licensePlateAttribute = attributes.first(where: {$0.name == "licenseplate"}) {
+          vehicleMO.licensePlate = licensePlateAttribute.value
+        }
+        
+        accountMO.addToVehicles(vehicleMO)
+      }
     }
     
-    vehiclesTableView.reloadData()
+    viewContext.saveOrRollback()
     forceUpdateBindings()
   }
   
@@ -135,30 +148,29 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   }
 }
 
-// MARK: - Table View Delegate & Datasource
+// MARK: - Table View Delegate
 
-extension PreferencesViewController: NSTableViewDataSource, NSTableViewDelegate  {
-  func numberOfRows(in tableView: NSTableView) -> Int {
-    return vehicles.count
+extension PreferencesViewController: NSTableViewDelegate  {
+  
+  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    guard let selectedObjects = vehiclesArrayController.selectedObjects,
+          let selectedVehicleMO = selectedObjects.first as? VehicleMO else { return false }
+    
+    return selectedVehicleMO.selected
   }
   
-  func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-    let vehicle = vehicles[row]
-    
-    guard let cell = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? NSTableCellView else { return nil }
-    
-    switch tableColumn?.identifier.rawValue {
-    case "Name":
-      cell.textField?.stringValue = vehicle.modelDescription
-    case "Model":
-      cell.textField?.stringValue = vehicle.modelType
-    case "Year":
-      cell.textField?.stringValue = vehicle.modelYear
-    default:
-      cell.textField?.stringValue = vehicle.vin
+  func tableViewSelectionDidChange(_ notification: Notification) {
+    guard let selectedObjects = vehiclesArrayController.selectedObjects,
+          let selectedVehicleMO = selectedObjects.first as? VehicleMO,
+          let accountMO = AppDelegate.persistenceManager.findFirst(entityName: AccountMO.className(), context: viewContext) as? AccountMO,
+          let vehicles = accountMO.vehicles else { return }
+
+    vehicles.forEach { vehicleMO in
+      guard let vehicleMO = vehicleMO as? VehicleMO else { return }
+      vehicleMO.selected = (vehicleMO == selectedVehicleMO)
     }
-    
-    return cell
+
+    viewContext.saveOrRollback()
   }
 }
 

@@ -15,7 +15,6 @@ let kBlankString = ""
 
 // MARK: - Keychain
 
-let kUsernameKeyForKeychain = "Porsche Connect Username"
 let kPasswordKeyForKeychain = "Porsche Connect Password"
 
 // MARK: - Logging
@@ -23,3 +22,9 @@ let kPasswordKeyForKeychain = "Porsche Connect Password"
 let LifecycleLogger = Logger(subsystem: kAppBundleId, category: "Lifecycle")
 let UILogger = Logger(subsystem: kAppBundleId, category: "UI")
 let CoreDataLogger = Logger(subsystem: kAppBundleId, category: "CoreData")
+
+// MARK: - Debugging Aid
+
+func doNothing() {
+  LifecycleLogger.info("Do Nothing() - remove this")
+}

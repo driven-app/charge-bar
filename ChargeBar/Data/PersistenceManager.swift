@@ -39,6 +39,14 @@ struct PersistenceManager {
     return try! context.count(for: NSFetchRequest(entityName: entityName))
   }
   
+  func findFirst(entityName: String, context: NSManagedObjectContext) -> Any? {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+    fetchRequest.fetchLimit = 1
+    let results = try! context.fetch(fetchRequest)
+    
+    return results.first
+  }
+  
   func deleteAll(entityName: String, context: NSManagedObjectContext) {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
     let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -51,14 +59,8 @@ extension NSManagedObjectContext {
 
   // MARK: - Save Functions
 
-  @discardableResult func saveOrRollback(date: Date = Date()) -> Bool {
-    guard hasChanges else {
-      return false
-    }
-
-    insertedObjects.union(updatedObjects).compactMap { $0 as? BaseManagedObject }.forEach { baseManagedObject in
-      baseManagedObject.updateProperties(date: date)
-    }
+  @discardableResult func saveOrRollback() -> Bool {
+    guard hasChanges else { return false }
 
     let result: Bool
 

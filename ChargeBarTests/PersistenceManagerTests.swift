@@ -10,18 +10,14 @@ import XCTest
 
 class PersistenceManagerTests: BaseXCTestCase {
   
-  // MARK: - Properties
-  
-  let mockDate = Date(timeIntervalSinceNow: -100)
-  
   // MARK: - Lifecycle
   
   override func setUp() {
-    PersistenceManager.shared.deleteAll(entityName: VehicleEntity.className(), context: viewContext)
+    PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: viewContext)
   }
   
   override func tearDown() {
-    PersistenceManager.shared.deleteAll(entityName: VehicleEntity.className(), context: viewContext)
+    PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: viewContext)
   }
   
   // MARK: - Tests
@@ -40,73 +36,75 @@ class PersistenceManagerTests: BaseXCTestCase {
   
   func testSaveContext() {
     XCTAssertFalse(viewContext.hasChanges)
-    let object = VehicleEntity(context: viewContext)
-    object.modelDescription = "Test Model"
+    _ = AccountMO(context: viewContext)
 
     XCTAssertTrue(viewContext.hasChanges)
-    XCTAssertNil(object.createdAt)
-    XCTAssertNil(object.updatedAt)
-    XCTAssertNil(object.id)
-
-    _ = viewContext.saveOrRollback(date: mockDate)
-
+    _ = viewContext.saveOrRollback()
     XCTAssertFalse(viewContext.hasChanges)
-    XCTAssertEqual(mockDate, object.createdAt)
-    XCTAssertEqual(mockDate, object.updatedAt)
-    XCTAssertNotNil(object.id)
   }
   
   func testSaveConextUpdateAtOnExistingObject() {
-    let mockUpdatedAt = Date()
-
-    let object = VehicleEntity(context: viewContext)
-    object.modelDescription = "Test Model"
+    let object = AccountMO(context: viewContext)
+    object.username = "Test Username"
     XCTAssertTrue(viewContext.hasChanges)
 
-    _ = viewContext.saveOrRollback(date: mockDate)
+    _ = viewContext.saveOrRollback()
 
     XCTAssertFalse(viewContext.hasChanges)
-    XCTAssertEqual(mockDate, object.createdAt)
-    XCTAssertEqual(mockDate, object.updatedAt)
 
-    object.modelDescription = "Test Model 2"
+    object.username = "Updated Username"
     XCTAssertTrue(viewContext.hasChanges)
-    _ = viewContext.saveOrRollback(date: mockUpdatedAt)
-
+    _ = viewContext.saveOrRollback()
     XCTAssertFalse(viewContext.hasChanges)
-    XCTAssertEqual(mockDate, object.createdAt)
-    XCTAssertEqual(mockUpdatedAt, object.updatedAt)
   }
   
   func testCreateNewEntity() {
-    let entity = VehicleEntity(context: viewContext)
+    let entity = AccountMO(context: viewContext)
     XCTAssertNotNil(entity)
   }
   
   func testEntityName() {
-    XCTAssertEqual("VehicleEntity", VehicleEntity.entityName)
+    XCTAssertEqual("AccountMO", AccountMO.entity().name!)
   }
 
   func testEntityDescription() {
-    XCTAssertNotNil(VehicleEntity.entity)
-    XCTAssertTrue(VehicleEntity.entity.isKind(of: NSEntityDescription.self))
+    XCTAssertNotNil(AccountMO.entity())
+    XCTAssertTrue(AccountMO.entity().isKind(of: NSEntityDescription.self))
   }
   
   func testCount() {
-    XCTAssertEqual(0, PersistenceManager.shared.count(entityName: VehicleEntity.className(), context: viewContext))
+    XCTAssertEqual(0, PersistenceManager.shared.count(entityName: AccountMO.className(), context: viewContext))
     
-    _ = VehicleEntity(context: viewContext)
+    _ = AccountMO(context: viewContext)
     _ = viewContext.saveOrRollback()
     
-    XCTAssertEqual(1, PersistenceManager.shared.count(entityName: VehicleEntity.className(), context: viewContext))
+    XCTAssertEqual(1, PersistenceManager.shared.count(entityName: AccountMO.className(), context: viewContext))
+  }
+  
+  func testFindFirst() {
+    XCTAssertEqual(0, PersistenceManager.shared.count(entityName: AccountMO.className(), context: viewContext))
+    
+    let accountMO = AccountMO(context: viewContext)
+    _ = viewContext.saveOrRollback()
+    
+    XCTAssertEqual(1, PersistenceManager.shared.count(entityName: AccountMO.className(), context: viewContext))
+    
+    let foundAccountMO = PersistenceManager.shared.findFirst(entityName: AccountMO.className(), context: viewContext) as! AccountMO
+    XCTAssertNotNil(foundAccountMO)
+    XCTAssertEqual(accountMO, foundAccountMO)
+  }
+  
+  func testFindFirstNothingFound() {
+    XCTAssertEqual(0, PersistenceManager.shared.count(entityName: AccountMO.className(), context: viewContext))
+    XCTAssertNil(PersistenceManager.shared.findFirst(entityName: AccountMO.className(), context: viewContext))
   }
 
   func testDeleteAll() {
-    _ = VehicleEntity(context: viewContext)
+    _ = AccountMO(context: viewContext)
     _ = viewContext.saveOrRollback()
 
-    XCTAssertEqual(1, PersistenceManager.shared.count(entityName: VehicleEntity.className(), context: viewContext))
-    PersistenceManager.shared.deleteAll(entityName: VehicleEntity.className(), context: viewContext)
-    XCTAssertEqual(0, PersistenceManager.shared.count(entityName: VehicleEntity.className(), context: viewContext))
+    XCTAssertEqual(1, PersistenceManager.shared.count(entityName: AccountMO.className(), context: viewContext))
+    PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: viewContext)
+    XCTAssertEqual(0, PersistenceManager.shared.count(entityName: AccountMO.className(), context: viewContext))
   }
 }
