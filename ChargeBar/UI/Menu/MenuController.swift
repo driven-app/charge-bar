@@ -34,7 +34,7 @@ final class MenuController: NSObject, NSMenuDelegate {
       return
     }
     
-    initPorscheConnect()
+//    initPorscheConnect()
     
     LifecycleLogger.info("Launched.")
   }

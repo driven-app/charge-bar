@@ -29,7 +29,6 @@ final class PreferencesWindowController: NSWindowController {
   }
 }
 
-
 // MARK: - View Controller
 
 class PreferencesViewController: NSViewController, LoginSheetDelegate {

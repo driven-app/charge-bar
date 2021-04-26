@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -19,9 +20,17 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="IZy-8b-bGH">
             <items>
-                <menuItem title="Item 1" id="KeO-YT-FNM">
+                <menuItem id="KeO-YT-FNM">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <outlet property="view" destination="orq-C3-r0D" id="RtM-WV-XWh"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="fKu-np-bId"/>
+                <menuItem title="Item" id="icm-y8-hB9">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="KcR-Gb-LOM"/>
                 <menuItem title="Preferences..." keyEquivalent="," id="BTo-25-UYm">
                     <connections>
                         <action selector="preferencesBtnPressed:" target="Voe-Tx-rLC" id="ozq-Bv-Puh"/>
@@ -35,7 +44,37 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="94" y="-59"/>
+            <point key="canvasLocation" x="-598" y="-444"/>
         </menu>
+        <customView id="orq-C3-r0D" userLabel="Battery View">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nHe-PV-6qt">
+                    <rect key="frame" x="18" y="35" width="53" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Battery" id="AOM-lr-eHC">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDg-6c-1QV">
+                    <rect key="frame" x="20" y="9" width="255" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <levelIndicatorCell key="cell" alignment="left" doubleValue="38" maxValue="100" warningValue="15" criticalValue="5" levelIndicatorStyle="continuousCapacity" id="j4c-SP-mJ6"/>
+                </levelIndicator>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UVh-k6-lBb">
+                    <rect key="frame" x="235" y="35" width="42" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="38%" id="pfO-kF-stE">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-237.5" y="-525"/>
+        </customView>
     </objects>
 </document>
