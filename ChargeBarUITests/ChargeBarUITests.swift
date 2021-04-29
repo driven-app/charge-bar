@@ -8,7 +8,7 @@
 import XCTest
 
 class ChargeBarUITests: BaseUITestCase {
-  
+    
   // MARK: - Lifecycle
   
   override func setUp() {
@@ -59,6 +59,8 @@ class ChargeBarUITests: BaseUITestCase {
   }
   
   func testAppLoginFailed() {
+    mockNetworkRoutes.mockPostLoginAuthFailure(router: MockPorscheConnectServer.shared.router)
+    
     openPreferencesWindow()
     
     let preferencesWindow = app.windows["ChargeBar Preferences"]
@@ -68,10 +70,10 @@ class ChargeBarUITests: BaseUITestCase {
     let sheet = preferencesWindow.sheets["LoginSheet"]
     
     let usernameField = sheet.textFields["UsernameTextField"]
-    XCTAssertEqual("", usernameField.value as! String)
+    XCTAssertEqual(kBlankString, usernameField.value as! String)
     
     let passwordField = sheet.secureTextFields["PasswordSecureTextField"]
-    XCTAssertEqual("", passwordField.value as! String)
+    XCTAssertEqual(kBlankString, passwordField.value as! String)
     
     usernameField.typeText("homer.simpson@icloud.example")
     passwordField.tap()

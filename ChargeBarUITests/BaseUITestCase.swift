@@ -15,11 +15,14 @@ class BaseUITestCase: XCTestCase {
   var menuBarsQuery: XCUIElementQuery?
   var menuBarItem: XCUIElement?
   
+  let mockNetworkRoutes = MockNetworkRoutes()
+  
   // MARK: - Common lifecycle
   
   override func setUp() {
     super.setUp()
     continueAfterFailure = false
+    HTTPCookieStorage.shared.cookies?.forEach { HTTPCookieStorage.shared.deleteCookie($0) }
     menuBarsQuery = app.menuBars
     menuBarItem = menuBarsQuery!.children(matching: .statusItem).element
     app.launchEnvironment = ["TEST_MODE": "true"]
