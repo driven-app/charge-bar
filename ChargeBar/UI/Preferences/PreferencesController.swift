@@ -89,7 +89,10 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
     accountStatusTextField.isHidden = true
     progressIndicator.startAnimation(nil)
     
-    AppDelegate.porscheConnect = PorscheConnect(username: username, password: password)
+    AppDelegate.porscheConnect = PorscheConnect(username: username,
+                                                password: password,
+                                                environment: AppDelegate.isRunningInTestMode() ? .Germany : .Test)
+    
     AppDelegate.porscheConnect!.vehicles() { result in
       DispatchQueue.main.async {
         switch result {

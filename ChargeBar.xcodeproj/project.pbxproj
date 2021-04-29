@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D066BBB263B203F0021F306 /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 6D066BBA263B203F0021F306 /* Embassy */; };
+		6D066BBE263B204C0021F306 /* Ambassador in Frameworks */ = {isa = PBXBuildFile; productRef = 6D066BBD263B204C0021F306 /* Ambassador */; };
 		6D07948D26367F77007CA490 /* PorscheConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 6D07948C26367F77007CA490 /* PorscheConnect */; };
 		6D43647925D7BD3500A516E7 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6D43647825D7BD3500A516E7 /* KeychainSwift */; };
 		6D682CA125D3336D007E675A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CA025D3336D007E675A /* AppDelegate.swift */; };
@@ -89,6 +91,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D07948D26367F77007CA490 /* PorscheConnect in Frameworks */,
+				6D066BBB263B203F0021F306 /* Embassy in Frameworks */,
+				6D066BBE263B204C0021F306 /* Ambassador in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +264,8 @@
 			name = ChargeBarUITests;
 			packageProductDependencies = (
 				6D07948C26367F77007CA490 /* PorscheConnect */,
+				6D066BBA263B203F0021F306 /* Embassy */,
+				6D066BBD263B204C0021F306 /* Ambassador */,
 			);
 			productName = ChargeBarUITests;
 			productReference = 6D682CB825D3336E007E675A /* ChargeBarUITests.xctest */;
@@ -299,6 +305,8 @@
 			packageReferences = (
 				6DD40BF125D5D19F0083828B /* XCRemoteSwiftPackageReference "porsche-connect" */,
 				6D43647725D7BD3500A516E7 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				6D066BB9263B203F0021F306 /* XCRemoteSwiftPackageReference "Embassy" */,
+				6D066BBC263B204C0021F306 /* XCRemoteSwiftPackageReference "Ambassador" */,
 			);
 			productRefGroup = 6D682C9E25D3336D007E675A /* Products */;
 			projectDirPath = "";
@@ -675,6 +683,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6D066BB9263B203F0021F306 /* XCRemoteSwiftPackageReference "Embassy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/envoy/Embassy.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.3;
+			};
+		};
+		6D066BBC263B204C0021F306 /* XCRemoteSwiftPackageReference "Ambassador" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/envoy/Ambassador.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.5;
+			};
+		};
 		6D43647725D7BD3500A516E7 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
@@ -694,6 +718,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6D066BBA263B203F0021F306 /* Embassy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D066BB9263B203F0021F306 /* XCRemoteSwiftPackageReference "Embassy" */;
+			productName = Embassy;
+		};
+		6D066BBD263B204C0021F306 /* Ambassador */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D066BBC263B204C0021F306 /* XCRemoteSwiftPackageReference "Ambassador" */;
+			productName = Ambassador;
+		};
 		6D07948C26367F77007CA490 /* PorscheConnect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6DD40BF125D5D19F0083828B /* XCRemoteSwiftPackageReference "porsche-connect" */;

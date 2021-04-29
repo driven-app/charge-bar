@@ -29,7 +29,7 @@ final class MenuController: NSObject, NSMenuDelegate {
     preventMultipleAppsFromRunning()
     setupMenuUI()
     
-    guard ProcessInfo.processInfo.environment["TEST_MODE"] == nil else {
+    guard !AppDelegate.isRunningInTestMode() else {
       runInTestMode()
       return
     }
@@ -60,8 +60,7 @@ final class MenuController: NSObject, NSMenuDelegate {
   }
   
   private func initPorscheConnect() {
-    let keychain = KeychainSwift()
-    guard let password = keychain.get(kPasswordKeyForKeychain),
+    guard let password = KeychainSwift().get(kPasswordKeyForKeychain),
           let accountMO = AppDelegate.persistenceManager.findFirst(entityName: AccountMO.className(), context: AppDelegate.persistenceManager.container.viewContext) as? AccountMO,
           let username = accountMO.username else { return }
     
@@ -87,6 +86,7 @@ final class MenuController: NSObject, NSMenuDelegate {
   private func runInTestMode() {
     LifecycleLogger.info("Running in test mode.")
     PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: AppDelegate.persistenceManager.container.viewContext)
+    KeychainSwift().delete(kPasswordKeyForKeychain)
   }
   
 }

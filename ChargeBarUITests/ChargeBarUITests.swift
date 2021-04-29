@@ -45,7 +45,7 @@ class ChargeBarUITests: BaseUITestCase {
   
   func testAppLoginSheetCancelled() {
     openPreferencesWindow()
-
+    
     let preferencesWindow = app.windows["ChargeBar Preferences"]
     preferencesWindow.buttons["LoginLogoutBtn"].click()
     
@@ -60,24 +60,24 @@ class ChargeBarUITests: BaseUITestCase {
   
   func testAppLoginFailed() {
     openPreferencesWindow()
-
+    
     let preferencesWindow = app.windows["ChargeBar Preferences"]
     preferencesWindow.buttons["LoginLogoutBtn"].click()
-
+    
     XCTAssertEqual(1, preferencesWindow.sheets.count)
     let sheet = preferencesWindow.sheets["LoginSheet"]
-
+    
     let usernameField = sheet.textFields["UsernameTextField"]
     XCTAssertEqual("", usernameField.value as! String)
-
+    
     let passwordField = sheet.secureTextFields["PasswordSecureTextField"]
     XCTAssertEqual("", passwordField.value as! String)
-
-    let loginBtn = sheet.buttons["LoginBtn"]
-
+    
     usernameField.typeText("homer.simpson@icloud.example")
     passwordField.tap()
     passwordField.typeText("Duh!")
+    
+    sheet.buttons["LoginBtn"].click()
   }
   
   // MARK: - Private

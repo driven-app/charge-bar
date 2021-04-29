@@ -15,4 +15,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   static var porscheConnect: PorscheConnect?
   static let persistenceManager = PersistenceManager.shared
+  
+  // MARK: - Static methods
+  
+  static func isRunningInTestMode() -> Bool {
+    return ProcessInfo.processInfo.environment["TEST_MODE"] != nil
+  }
 }
