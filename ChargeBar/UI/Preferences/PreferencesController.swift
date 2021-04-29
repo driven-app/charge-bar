@@ -92,7 +92,7 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
     AppDelegate.porscheConnect = PorscheConnect(username: username,
                                                 password: password,
                                                 environment: AppDelegate.isRunningInTestMode() ? .Germany : .Test)
-    
+        
     AppDelegate.porscheConnect!.vehicles() { result in
       DispatchQueue.main.async {
         switch result {
@@ -101,7 +101,7 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
         case .failure(_):
           self.handleLoginFailure()
         }
-        
+
         self.progressIndicator.stopAnimation(nil)
         self.accountStatusTextField.isHidden = false
       }
@@ -140,6 +140,12 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   private func handleLoginFailure() {
     AppDelegate.porscheConnect = nil
     forceUpdateBindings()
+    
+    let alert = NSAlert()
+    alert.alertStyle = .critical
+    alert.messageText = NSLocalizedString("Login Error", comment: kBlankString)
+    alert.informativeText = NSLocalizedString("There was an issue logging into your Porsche Connect account, please check your username and password and try again.", comment: kBlankString)
+    alert.beginSheetModal(for: self.view.window!)
   }
   
   private func forceUpdateBindings() {

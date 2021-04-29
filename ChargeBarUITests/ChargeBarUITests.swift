@@ -80,6 +80,8 @@ class ChargeBarUITests: BaseUITestCase {
     passwordField.typeText("Duh!")
     
     sheet.buttons["LoginBtn"].click()
+        
+    _ = app.staticTexts["Login Error"].waitForExistence(timeout: kDefaultTestTimeout)
   }
   
   // MARK: - Private
