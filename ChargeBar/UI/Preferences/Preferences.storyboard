@@ -187,9 +187,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-Qd-N9a">
-                                <rect key="frame" x="18" y="160" width="152" height="16"/>
+                                <rect key="frame" x="18" y="160" width="187" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="My Porsche username:" id="zPx-CH-hom">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Porsche Connect username:" id="zPx-CH-hom">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -203,6 +203,7 @@
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility description="Porsche Connect username" help="Enter your Porsche Connect username which is usually your email address" identifier="UsernameTextField"/>
                             </textField>
                             <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xnp-QA-RTX">
                                 <rect key="frame" x="20" y="71" width="440" height="21"/>
@@ -215,11 +216,12 @@
                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
+                                <accessibility description="Porsche Connect password" help="Enter your Porsche Connect password into this secure text field" identifier="PasswordSecureTextField"/>
                             </secureTextField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0c-uk-X0z">
-                                <rect key="frame" x="18" y="100" width="150" height="16"/>
+                                <rect key="frame" x="18" y="100" width="185" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="My Porsche password:" id="Pg5-Mc-cQZ">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Porsche Connect password:" id="Pg5-Mc-cQZ">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -235,6 +237,7 @@
 DQ
 </string>
                                 </buttonCell>
+                                <accessibility description="Login" help="Click to login after filling out your Porsche Connect username and password" identifier="LoginBtn"/>
                                 <connections>
                                     <action selector="okayBtnPressed:" target="v7r-35-a5K" id="iUw-zA-RKa"/>
                                 </connections>
@@ -249,12 +252,14 @@ DQ
 Gw
 </string>
                                 </buttonCell>
+                                <accessibility description="Cancel" help="Click to dismiss the login sheet" identifier="CancelBtn"/>
                                 <connections>
                                     <action selector="cancelBtnPressed:" target="v7r-35-a5K" id="blZ-mV-xid"/>
                                 </connections>
                             </button>
                         </subviews>
                     </view>
+                    <accessibility identifier="LoginSheet"/>
                     <connections>
                         <outlet property="passwordTextField" destination="Xnp-QA-RTX" id="TPs-2f-R6n"/>
                         <outlet property="usernameTextField" destination="LNh-Ot-9LQ" id="sgT-7h-14l"/>

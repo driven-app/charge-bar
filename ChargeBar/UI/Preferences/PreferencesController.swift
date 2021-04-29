@@ -194,10 +194,7 @@ class LoginSheetWindow: NSWindow {
   @IBAction func okayBtnPressed(_ sender: Any) {
     UILogger.info("Ok button pressed on login detail sheet.")
     
-    if usernameTextField.stringValue.isEmpty || passwordTextField.stringValue.isEmpty {
-      return
-    }
-    
+    if usernameTextField.stringValue.isEmpty || passwordTextField.stringValue.isEmpty { return }
     dismissSheet(username: usernameTextField.stringValue, password: passwordTextField.stringValue)
   }
   

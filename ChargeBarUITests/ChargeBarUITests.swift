@@ -24,23 +24,65 @@ class ChargeBarUITests: BaseUITestCase {
   }
   
   func testOpenClosePreferencesDialog() {
-    menuBarsQuery!.menuItems["Preferences..."].click()
+    openPreferencesWindow()
     app.windows["ChargeBar Preferences"].buttons[XCUIIdentifierCloseWindow].click()
   }
   
   func testAppStartsLoggedOutInTestMode() {
-    menuBarsQuery!.menuItems["Preferences..."].click()
+    openPreferencesWindow()
     
     let preferencesWindow = app.windows["ChargeBar Preferences"]
     XCTAssertEqual("Not Connected", preferencesWindow.staticTexts["AccountStatusTextField"].value as! String)
     XCTAssertEqual("Login ...", preferencesWindow.buttons["LoginLogoutBtn"].title)
     
     let table = preferencesWindow.tables["VehiclesTable"]
-    XCTAssertNotNil(table)
     XCTAssertEqual(3, table.tableColumns.count)
     XCTAssertNotNil(table.tableColumns["Name"])
     XCTAssertNotNil(table.tableColumns["License Plate"])
     XCTAssertNotNil(table.tableColumns["VIN"])
     XCTAssertEqual(0, table.tableRows.count)
+  }
+  
+  func testAppLoginSheetCancelled() {
+    openPreferencesWindow()
+
+    let preferencesWindow = app.windows["ChargeBar Preferences"]
+    preferencesWindow.buttons["LoginLogoutBtn"].click()
+    
+    XCTAssertEqual(1, preferencesWindow.sheets.count)
+    let sheet = preferencesWindow.sheets["LoginSheet"]
+    
+    let cancelBtn = sheet.buttons["CancelBtn"]
+    cancelBtn.click()
+    
+    XCTAssertEqual(0, preferencesWindow.sheets.count)
+  }
+  
+  func testAppLoginFailed() {
+    openPreferencesWindow()
+
+    let preferencesWindow = app.windows["ChargeBar Preferences"]
+    preferencesWindow.buttons["LoginLogoutBtn"].click()
+
+    XCTAssertEqual(1, preferencesWindow.sheets.count)
+    let sheet = preferencesWindow.sheets["LoginSheet"]
+
+    let usernameField = sheet.textFields["UsernameTextField"]
+    XCTAssertEqual("", usernameField.value as! String)
+
+    let passwordField = sheet.secureTextFields["PasswordSecureTextField"]
+    XCTAssertEqual("", passwordField.value as! String)
+
+    let loginBtn = sheet.buttons["LoginBtn"]
+
+    usernameField.typeText("homer.simpson@icloud.example")
+    passwordField.tap()
+    passwordField.typeText("Duh!")
+  }
+  
+  // MARK: - Private
+  
+  private func openPreferencesWindow() {
+    menuBarsQuery!.menuItems["Preferences..."].click()
   }
 }
