@@ -86,6 +86,7 @@ final class MenuController: NSObject, NSMenuDelegate {
   
   private func runInTestMode() {
     LifecycleLogger.info("Running in test mode.")
+    PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: AppDelegate.persistenceManager.container.viewContext)
   }
   
 }

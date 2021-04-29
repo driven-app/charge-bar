@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -50,23 +50,20 @@
             <rect key="frame" x="0.0" y="0.0" width="295" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nHe-PV-6qt">
-                    <rect key="frame" x="18" y="35" width="53" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Battery" id="AOM-lr-eHC">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nHe-PV-6qt">
+                    <rect key="frame" x="18" y="35" width="71" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Taycan 4S" id="AOM-lr-eHC">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDg-6c-1QV">
+                <levelIndicator verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yDg-6c-1QV">
                     <rect key="frame" x="20" y="9" width="255" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <levelIndicatorCell key="cell" alignment="left" doubleValue="38" maxValue="100" warningValue="15" criticalValue="5" levelIndicatorStyle="continuousCapacity" id="j4c-SP-mJ6"/>
                 </levelIndicator>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UVh-k6-lBb">
-                    <rect key="frame" x="235" y="35" width="42" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UVh-k6-lBb">
+                    <rect key="frame" x="244" y="35" width="33" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="38%" id="pfO-kF-stE">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -74,6 +71,15 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <constraints>
+                <constraint firstItem="yDg-6c-1QV" firstAttribute="top" secondItem="nHe-PV-6qt" secondAttribute="bottom" constant="8" symbolic="YES" id="Mqg-yK-cEy"/>
+                <constraint firstAttribute="trailing" secondItem="UVh-k6-lBb" secondAttribute="trailing" constant="20" symbolic="YES" id="PeV-JE-oQW"/>
+                <constraint firstItem="nHe-PV-6qt" firstAttribute="top" secondItem="orq-C3-r0D" secondAttribute="top" constant="9" id="QuO-YU-lEA"/>
+                <constraint firstItem="nHe-PV-6qt" firstAttribute="leading" secondItem="orq-C3-r0D" secondAttribute="leading" constant="20" symbolic="YES" id="YUj-5z-uY1"/>
+                <constraint firstItem="UVh-k6-lBb" firstAttribute="trailing" secondItem="yDg-6c-1QV" secondAttribute="trailing" id="lxp-Dp-zdT"/>
+                <constraint firstItem="nHe-PV-6qt" firstAttribute="baseline" secondItem="UVh-k6-lBb" secondAttribute="baseline" id="xy2-UH-C6f"/>
+                <constraint firstItem="nHe-PV-6qt" firstAttribute="leading" secondItem="yDg-6c-1QV" secondAttribute="leading" id="zWx-N2-WQW"/>
+            </constraints>
             <point key="canvasLocation" x="-237.5" y="-525"/>
         </customView>
     </objects>

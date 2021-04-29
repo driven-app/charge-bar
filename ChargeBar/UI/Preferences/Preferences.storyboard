@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Hss-QP-aVF">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Hss-QP-aVF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,6 +57,7 @@
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility description="The connection status of your Porsche Connect account" identifier="AccountStatusTextField"/>
                                 <connections>
                                     <binding destination="dLl-eN-JlX" name="value" keyPath="accountStatusText" id="tqO-V5-RJS"/>
                                     <binding destination="dLl-eN-JlX" name="textColor" keyPath="accountStatusTextColor" id="1l4-Ab-lcb"/>
@@ -69,6 +70,7 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <accessibility help="Use this button to log in or log out of your Porsche Connect account" identifier="LoginLogoutBtn"/>
                                 <connections>
                                     <action selector="loginLogoutBtnPressed:" target="dLl-eN-JlX" id="bfu-oD-50T"/>
                                     <binding destination="dLl-eN-JlX" name="title" keyPath="loginLogoutBtnText" id="cdq-cO-XFM"/>
@@ -107,7 +109,7 @@
                                                         </binding>
                                                     </connections>
                                                 </tableColumn>
-                                                <tableColumn identifier="VIN" editable="NO" width="127" minWidth="10" maxWidth="3.4028234663852886e+38" id="g9Z-Fb-tQf">
+                                                <tableColumn identifier="License Plate" editable="NO" width="127" minWidth="10" maxWidth="3.4028234663852886e+38" id="g9Z-Fb-tQf">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="License Plate">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -122,7 +124,7 @@
                                                         <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.licensePlate" id="wgx-m4-9Zy"/>
                                                     </connections>
                                                 </tableColumn>
-                                                <tableColumn identifier="Model" editable="NO" width="189" minWidth="40" maxWidth="1000" id="7sX-VT-4nT">
+                                                <tableColumn identifier="VIN" editable="NO" width="189" minWidth="40" maxWidth="1000" id="7sX-VT-4nT">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="VIN">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -157,6 +159,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="478" height="28"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
+                                <accessibility description="Vehicles List" help="List of vehicles in your Porsche Connect account" identifier="VehiclesTable"/>
                             </scrollView>
                             <progressIndicator fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="VgH-tl-8Mo">
                                 <rect key="frame" x="134" y="314" width="16" height="16"/>
