@@ -28,7 +28,15 @@ final class MenuController: NSObject, NSMenuDelegate {
     super.awakeFromNib()
     preventMultipleAppsFromRunning()
     setupMenuUI()
+    
+    guard !AppDelegate.isRunningInTestMode() else {
+      runInTestMode()
+      return
+    }
+    
 //    initPorscheConnect()
+    
+    LifecycleLogger.info("Launched.")
   }
   
   // MARK: - Startup
@@ -52,8 +60,9 @@ final class MenuController: NSObject, NSMenuDelegate {
   }
   
   private func initPorscheConnect() {
-    let keychain = KeychainSwift()
-    guard let username = keychain.get(kUsernameKeyForKeychain), let password = keychain.get(kPasswordKeyForKeychain) else { return }
+    guard let password = KeychainSwift().get(kPasswordKeyForKeychain),
+          let accountMO = AppDelegate.persistenceManager.findFirst(entityName: AccountMO.className(), context: AppDelegate.persistenceManager.container.viewContext) as? AccountMO,
+          let username = accountMO.username else { return }
     
     AppDelegate.porscheConnect = PorscheConnect(username: username, password: password)
     LifecycleLogger.info("Porsche Connect init from existing keychain")
@@ -70,6 +79,14 @@ final class MenuController: NSObject, NSMenuDelegate {
   @IBAction func quitBtnPressed(_ sender: Any) {
     UILogger.info("Quit menu item pressed.")
     NSApp.terminate(sender)
+  }
+  
+  // MARK: - Test Support
+  
+  private func runInTestMode() {
+    LifecycleLogger.info("Running in test mode.")
+    PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: AppDelegate.persistenceManager.container.viewContext)
+    KeychainSwift().delete(kPasswordKeyForKeychain)
   }
   
 }

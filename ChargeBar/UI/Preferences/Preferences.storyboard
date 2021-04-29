@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Hss-QP-aVF">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Hss-QP-aVF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,7 +40,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="520" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0b-yS-2w8" userLabel="Account Status">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHL-01-TSZ" userLabel="Account Status Key">
+                                <rect key="frame" x="18" y="314" width="108" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Account Status:" id="jWR-ld-rbw">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0b-yS-2w8" userLabel="Account Status Value">
                                 <rect key="frame" x="132" y="314" width="178" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Not Connected" id="eeM-kj-ESo">
@@ -48,7 +57,25 @@
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility description="The connection status of your Porsche Connect account" identifier="AccountStatusTextField"/>
+                                <connections>
+                                    <binding destination="dLl-eN-JlX" name="value" keyPath="accountStatusText" id="tqO-V5-RJS"/>
+                                    <binding destination="dLl-eN-JlX" name="textColor" keyPath="accountStatusTextColor" id="1l4-Ab-lcb"/>
+                                </connections>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stz-Kd-djw">
+                                <rect key="frame" x="424" y="303" width="83" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Login ..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fcJ-Cy-tLN">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <accessibility help="Use this button to log in or log out of your Porsche Connect account" identifier="LoginLogoutBtn"/>
+                                <connections>
+                                    <action selector="loginLogoutBtnPressed:" target="dLl-eN-JlX" id="bfu-oD-50T"/>
+                                    <binding destination="dLl-eN-JlX" name="title" keyPath="loginLogoutBtnText" id="cdq-cO-XFM"/>
+                                </connections>
+                            </button>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJ1-bR-3kk">
                                 <rect key="frame" x="20" y="21" width="480" height="269"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -56,14 +83,14 @@
                                     <rect key="frame" x="1" y="1" width="478" height="267"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" headerView="XVq-P6-qSn" viewBased="YES" id="3Ta-hr-evv">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="24" headerView="XVq-P6-qSn" id="3Ta-hr-evv">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="239"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="116" minWidth="40" maxWidth="1000" id="JRs-KK-Krc">
+                                                <tableColumn identifier="Name" editable="NO" width="116" minWidth="40" maxWidth="1000" id="JRs-KK-Krc">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -74,101 +101,16 @@
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                    <prototypeCellViews>
-                                                        <tableCellView id="84i-D2-rgG">
-                                                            <rect key="frame" x="18" y="0.0" width="114" height="24"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="bxR-5h-wUc">
-                                                                    <rect key="frame" x="0.0" y="4" width="114" height="16"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="HP2-pI-afy">
-                                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="bxR-5h-wUc" firstAttribute="centerX" secondItem="84i-D2-rgG" secondAttribute="centerX" id="Ait-Ob-PTj"/>
-                                                                <constraint firstItem="bxR-5h-wUc" firstAttribute="centerY" secondItem="84i-D2-rgG" secondAttribute="centerY" id="RT7-Rt-mE9"/>
-                                                                <constraint firstItem="bxR-5h-wUc" firstAttribute="leading" secondItem="84i-D2-rgG" secondAttribute="leading" constant="2" id="S1Z-kX-9b7"/>
-                                                            </constraints>
-                                                            <connections>
-                                                                <outlet property="textField" destination="bxR-5h-wUc" id="sIm-7p-WlY"/>
-                                                            </connections>
-                                                        </tableCellView>
-                                                    </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.modelDescription" id="Je0-YN-gaj">
+                                                            <dictionary key="options">
+                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
                                                 </tableColumn>
-                                                <tableColumn width="104" minWidth="40" maxWidth="1000" id="7sX-VT-4nT">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Model">
-                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                    </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="vtP-hV-cf7">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                    <prototypeCellViews>
-                                                        <tableCellView id="kgb-vx-5K7">
-                                                            <rect key="frame" x="149" y="0.0" width="104" height="24"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tcU-UF-xuA">
-                                                                    <rect key="frame" x="0.0" y="4" width="104" height="16"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="VG2-kM-YpA">
-                                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="tcU-UF-xuA" firstAttribute="centerY" secondItem="kgb-vx-5K7" secondAttribute="centerY" id="CNq-LR-ije"/>
-                                                                <constraint firstItem="tcU-UF-xuA" firstAttribute="leading" secondItem="kgb-vx-5K7" secondAttribute="leading" constant="2" id="d6D-OR-Cef"/>
-                                                                <constraint firstItem="tcU-UF-xuA" firstAttribute="centerX" secondItem="kgb-vx-5K7" secondAttribute="centerX" id="i2l-DK-nWz"/>
-                                                            </constraints>
-                                                            <connections>
-                                                                <outlet property="textField" destination="tcU-UF-xuA" id="lKo-7Z-mfo"/>
-                                                            </connections>
-                                                        </tableCellView>
-                                                    </prototypeCellViews>
-                                                </tableColumn>
-                                                <tableColumn width="66" minWidth="10" maxWidth="3.4028234663852886e+38" id="rej-Y1-LZL">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Year">
-                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="40i-bu-G4W">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                    <prototypeCellViews>
-                                                        <tableCellView id="Fkh-xo-ncL">
-                                                            <rect key="frame" x="270" y="0.0" width="66" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdZ-Gp-pkq">
-                                                                    <rect key="frame" x="0.0" y="1" width="66" height="16"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="eiW-X1-sUb">
-                                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
-                                                            </subviews>
-                                                            <connections>
-                                                                <outlet property="textField" destination="JdZ-Gp-pkq" id="Qhl-Za-CCU"/>
-                                                            </connections>
-                                                        </tableCellView>
-                                                    </prototypeCellViews>
-                                                </tableColumn>
-                                                <tableColumn width="127" minWidth="10" maxWidth="3.4028234663852886e+38" id="g9Z-Fb-tQf">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="VIN">
+                                                <tableColumn identifier="License Plate" editable="NO" width="127" minWidth="10" maxWidth="3.4028234663852886e+38" id="g9Z-Fb-tQf">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="License Plate">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -178,29 +120,30 @@
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                    <prototypeCellViews>
-                                                        <tableCellView id="CmG-j5-BCf">
-                                                            <rect key="frame" x="353" y="0.0" width="124" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDQ-Lg-oeo">
-                                                                    <rect key="frame" x="0.0" y="1" width="124" height="16"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="2Ti-Mt-FhC">
-                                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
-                                                            </subviews>
-                                                            <connections>
-                                                                <outlet property="textField" destination="wDQ-Lg-oeo" id="1Y3-hX-EUY"/>
-                                                            </connections>
-                                                        </tableCellView>
-                                                    </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.licensePlate" id="wgx-m4-9Zy"/>
+                                                    </connections>
+                                                </tableColumn>
+                                                <tableColumn identifier="VIN" editable="NO" width="189" minWidth="40" maxWidth="1000" id="7sX-VT-4nT">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="VIN">
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="vtP-hV-cf7">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.vin" id="Kpg-RN-ueS"/>
+                                                    </connections>
                                                 </tableColumn>
                                             </tableColumns>
                                             <accessibility description="Vehicles" help="List of vehicles in your My Porsche account" identifier="VehiclesTable"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="dLl-eN-JlX" id="M2H-qb-p5O"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -216,27 +159,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="478" height="28"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
+                                <accessibility description="Vehicles List" help="List of vehicles in your Porsche Connect account" identifier="VehiclesTable"/>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHL-01-TSZ">
-                                <rect key="frame" x="18" y="314" width="108" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Account Status:" id="jWR-ld-rbw">
-                                    <font key="font" metaFont="systemBold"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="stz-Kd-djw">
-                                <rect key="frame" x="424" y="303" width="83" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Login ..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fcJ-Cy-tLN">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="loginLogoutBtnPressed:" target="dLl-eN-JlX" id="bfu-oD-50T"/>
-                                </connections>
-                            </button>
                             <progressIndicator fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="VgH-tl-8Mo">
                                 <rect key="frame" x="134" y="314" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -248,6 +172,8 @@
                         <outlet property="loginLogoutBtn" destination="stz-Kd-djw" id="NeR-R6-Z2g"/>
                         <outlet property="loginSheetWindow" destination="v7r-35-a5K" id="yxL-v6-vtN"/>
                         <outlet property="progressIndicator" destination="VgH-tl-8Mo" id="924-gU-OOJ"/>
+                        <outlet property="vehiclesArrayController" destination="9DO-1q-trV" id="Swl-Fa-Ael"/>
+                        <outlet property="vehiclesTableView" destination="3Ta-hr-evv" id="Lti-ev-ef7"/>
                     </connections>
                 </viewController>
                 <customObject id="AVV-34-6UR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -255,15 +181,15 @@
                     <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                     <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                     <rect key="contentRect" x="245" y="301" width="480" height="196"/>
-                    <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+                    <rect key="screenRect" x="0.0" y="0.0" width="2880" height="1595"/>
                     <view key="contentView" id="Pjg-Yj-7Dt">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="196"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-Qd-N9a">
-                                <rect key="frame" x="18" y="160" width="152" height="16"/>
+                                <rect key="frame" x="18" y="160" width="187" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="My Porsche username:" id="zPx-CH-hom">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Porsche Connect username:" id="zPx-CH-hom">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -277,6 +203,7 @@
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility description="Porsche Connect username" help="Enter your Porsche Connect username which is usually your email address" identifier="UsernameTextField"/>
                             </textField>
                             <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xnp-QA-RTX">
                                 <rect key="frame" x="20" y="71" width="440" height="21"/>
@@ -289,11 +216,12 @@
                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
+                                <accessibility description="Porsche Connect password" help="Enter your Porsche Connect password into this secure text field" identifier="PasswordSecureTextField"/>
                             </secureTextField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0c-uk-X0z">
-                                <rect key="frame" x="18" y="100" width="150" height="16"/>
+                                <rect key="frame" x="18" y="100" width="185" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="My Porsche password:" id="Pg5-Mc-cQZ">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Porsche Connect password:" id="Pg5-Mc-cQZ">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -305,7 +233,11 @@
                                 <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i4a-0S-BC4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
+                                <accessibility description="Login" help="Click to login after filling out your Porsche Connect username and password" identifier="LoginBtn"/>
                                 <connections>
                                     <action selector="okayBtnPressed:" target="v7r-35-a5K" id="iUw-zA-RKa"/>
                                 </connections>
@@ -320,17 +252,25 @@
 Gw
 </string>
                                 </buttonCell>
+                                <accessibility description="Cancel" help="Click to dismiss the login sheet" identifier="CancelBtn"/>
                                 <connections>
                                     <action selector="cancelBtnPressed:" target="v7r-35-a5K" id="blZ-mV-xid"/>
                                 </connections>
                             </button>
                         </subviews>
                     </view>
+                    <accessibility identifier="LoginSheet"/>
                     <connections>
                         <outlet property="passwordTextField" destination="Xnp-QA-RTX" id="TPs-2f-R6n"/>
                         <outlet property="usernameTextField" destination="LNh-Ot-9LQ" id="sgT-7h-14l"/>
                     </connections>
                 </window>
+                <userDefaultsController representsSharedInstance="YES" id="MlW-X3-C1T"/>
+                <arrayController mode="entity" entityName="VehicleMO" editable="NO" automaticallyPreparesContent="YES" id="9DO-1q-trV">
+                    <connections>
+                        <binding destination="dLl-eN-JlX" name="managedObjectContext" keyPath="self.viewContext" id="ynQ-dx-Qm4"/>
+                    </connections>
+                </arrayController>
             </objects>
             <point key="canvasLocation" x="208" y="658"/>
         </scene>

@@ -7,36 +7,84 @@
 
 import XCTest
 
-class ChargeBarUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+class ChargeBarUITests: BaseUITestCase {
+    
+  // MARK: - Lifecycle
+  
+  override func setUp() {
+    super.setUp()
+    tapMenuBar()
+  }
+  
+  // MARK: - Tests
+  
+  func testOpenCloseStatusBarMenu() {
+    XCTAssertNotNil(menuBarsQuery!.menuItems["Preferences"])
+    XCTAssertNotNil(menuBarsQuery!.menuItems["Quit ChargeBar"])
+  }
+  
+  func testOpenClosePreferencesDialog() {
+    openPreferencesWindow()
+    app.windows["ChargeBar Preferences"].buttons[XCUIIdentifierCloseWindow].click()
+  }
+  
+  func testAppStartsLoggedOutInTestMode() {
+    openPreferencesWindow()
+    
+    let preferencesWindow = app.windows["ChargeBar Preferences"]
+    XCTAssertEqual("Not Connected", preferencesWindow.staticTexts["AccountStatusTextField"].value as! String)
+    XCTAssertEqual("Login ...", preferencesWindow.buttons["LoginLogoutBtn"].title)
+    
+    let table = preferencesWindow.tables["VehiclesTable"]
+    XCTAssertEqual(3, table.tableColumns.count)
+    XCTAssertNotNil(table.tableColumns["Name"])
+    XCTAssertNotNil(table.tableColumns["License Plate"])
+    XCTAssertNotNil(table.tableColumns["VIN"])
+    XCTAssertEqual(0, table.tableRows.count)
+  }
+  
+  func testAppLoginSheetCancelled() {
+    openPreferencesWindow()
+    
+    let preferencesWindow = app.windows["ChargeBar Preferences"]
+    preferencesWindow.buttons["LoginLogoutBtn"].click()
+    
+    XCTAssertEqual(1, preferencesWindow.sheets.count)
+    let sheet = preferencesWindow.sheets["LoginSheet"]
+    
+    let cancelBtn = sheet.buttons["CancelBtn"]
+    cancelBtn.click()
+    
+    XCTAssertEqual(0, preferencesWindow.sheets.count)
+  }
+  
+  func testAppLoginFailed() {
+    mockNetworkRoutes.mockPostLoginAuthFailure(router: MockPorscheConnectServer.shared.router)
+    
+    openPreferencesWindow()
+    
+    let preferencesWindow = app.windows["ChargeBar Preferences"]
+    preferencesWindow.buttons["LoginLogoutBtn"].click()
+    
+    XCTAssertEqual(1, preferencesWindow.sheets.count)
+    let sheet = preferencesWindow.sheets["LoginSheet"]
+    
+    let usernameField = sheet.textFields["UsernameTextField"]
+    XCTAssertEqual(kBlankString, usernameField.value as! String)
+    
+    let passwordField = sheet.secureTextFields["PasswordSecureTextField"]
+    XCTAssertEqual(kBlankString, passwordField.value as! String)
+    
+    usernameField.typeText("homer.simpson@icloud.example")
+    passwordField.tap()
+    passwordField.typeText("Duh!")
+    
+    sheet.buttons["LoginBtn"].click()
+  }
+  
+  // MARK: - Private
+  
+  private func openPreferencesWindow() {
+    menuBarsQuery!.menuItems["Preferences..."].click()
+  }
 }

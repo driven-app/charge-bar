@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AccountMO" representedClassName="AccountMO" syncable="YES" codeGenerationType="class">
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="vehicles" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="VehicleMO" inverseName="account" inverseEntity="VehicleMO"/>
+    </entity>
+    <entity name="VehicleMO" representedClassName="VehicleMO" syncable="YES" codeGenerationType="class">
+        <attribute name="licensePlate" optional="YES" attributeType="String"/>
+        <attribute name="modelDescription" optional="YES" attributeType="String"/>
+        <attribute name="modelType" optional="YES" attributeType="String"/>
+        <attribute name="modelYear" optional="YES" attributeType="String"/>
+        <attribute name="selected" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="vin" optional="YES" attributeType="String"/>
+        <relationship name="account" maxCount="1" deletionRule="Nullify" destinationEntity="AccountMO" inverseName="vehicles" inverseEntity="AccountMO"/>
+    </entity>
+    <elements>
+        <element name="VehicleMO" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="AccountMO" positionX="-54" positionY="63" width="128" height="59"/>
+    </elements>
+</model>

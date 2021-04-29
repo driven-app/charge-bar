@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import CoreData
 import PorscheConnect
 import KeychainSwift
 
@@ -28,16 +29,36 @@ final class PreferencesWindowController: NSWindowController {
   }
 }
 
-
 // MARK: - View Controller
 
 class PreferencesViewController: NSViewController, LoginSheetDelegate {
   
   // MARK: - Properties
+  
   @IBOutlet var accountStatusTextField: NSTextField!
   @IBOutlet var progressIndicator: NSProgressIndicator!
   @IBOutlet var loginLogoutBtn: NSButton!
+  @IBOutlet var vehiclesTableView: NSTableView!
+  @IBOutlet var vehiclesArrayController: NSArrayController!
   @IBOutlet var loginSheetWindow: LoginSheetWindow!
+  
+  private var isConnected: Bool { AppDelegate.porscheConnect != nil }
+  
+  // MARK: - Dynamic Properties
+  
+  @objc private dynamic var viewContext: NSManagedObjectContext = PersistenceManager.shared.container.viewContext
+  
+  @objc private dynamic var accountStatusText: String {
+    return NSLocalizedString(isConnected ? "Connected" : "Not Connected", comment: kBlankString)
+  }
+  
+  @objc private dynamic var accountStatusTextColor: NSColor {
+    return isConnected ? .systemGreen : .systemRed
+  }
+  
+  @objc private dynamic var loginLogoutBtnText: String {
+    return NSLocalizedString(isConnected ? "Logout" : "Login ...", comment: kBlankString)
+  }
   
   // MARK: - Lifecycle
   
@@ -68,7 +89,10 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
     accountStatusTextField.isHidden = true
     progressIndicator.startAnimation(nil)
     
-    AppDelegate.porscheConnect = PorscheConnect(username: username, password: password)
+    AppDelegate.porscheConnect = PorscheConnect(username: username,
+                                                password: password,
+                                                environment: AppDelegate.isRunningInTestMode() ? .Germany : .Test)
+    
     AppDelegate.porscheConnect!.vehicles() { result in
       DispatchQueue.main.async {
         switch result {
@@ -88,17 +112,67 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   
   private func handleLoginSuccess(username: String, password: String, vehicles: [Vehicle]?) {
     let keychain = KeychainSwift()
-    keychain.set(username, forKey: kUsernameKeyForKeychain)
     keychain.set(password, forKey: kPasswordKeyForKeychain)
     
-    accountStatusTextField.textColor = .systemGreen
-    accountStatusTextField.stringValue = NSLocalizedString("Connected", comment: kBlankString)
-    loginLogoutBtn.title = NSLocalizedString("Logout", comment: kBlankString)
+    AppDelegate.persistenceManager.deleteAll(entityName: AccountMO.className(), context: viewContext)
+    let accountMO = AccountMO(context: viewContext)
+    accountMO.username = username
+    
+    if let vehicles = vehicles {
+      vehicles.forEach { vehicle in
+        let vehicleMO = VehicleMO(context: viewContext)
+        vehicleMO.modelDescription = vehicle.modelDescription
+        vehicleMO.modelYear = vehicle.modelYear
+        vehicleMO.modelType = vehicle.modelType
+        vehicleMO.vin = vehicle.vin
+        if let attributes = vehicle.attributes, let licensePlateAttribute = attributes.first(where: {$0.name == "licenseplate"}) {
+          vehicleMO.licensePlate = licensePlateAttribute.value
+        }
+        
+        accountMO.addToVehicles(vehicleMO)
+      }
+    }
+    
+    viewContext.saveOrRollback()
+    forceUpdateBindings()
   }
   
   private func handleLoginFailure() {
-    accountStatusTextField.textColor = .systemRed
-    accountStatusTextField.stringValue = NSLocalizedString("Not Connected", comment: kBlankString)
+    AppDelegate.porscheConnect = nil
+    forceUpdateBindings()
+  }
+  
+  private func forceUpdateBindings() {
+    ["accountStatusText", "accountStatusTextColor", "loginLogoutBtnText"].forEach { key in
+      self.willChangeValue(forKey: key)
+      self.didChangeValue(forKey: key)
+    }
+  }
+}
+
+// MARK: - Table View Delegate
+
+extension PreferencesViewController: NSTableViewDelegate  {
+  
+  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    guard let selectedObjects = vehiclesArrayController.selectedObjects,
+          let selectedVehicleMO = selectedObjects.first as? VehicleMO else { return false }
+    
+    return selectedVehicleMO.selected
+  }
+  
+  func tableViewSelectionDidChange(_ notification: Notification) {
+    guard let selectedObjects = vehiclesArrayController.selectedObjects,
+          let selectedVehicleMO = selectedObjects.first as? VehicleMO,
+          let accountMO = AppDelegate.persistenceManager.findFirst(entityName: AccountMO.className(), context: viewContext) as? AccountMO,
+          let vehicles = accountMO.vehicles else { return }
+
+    vehicles.forEach { vehicleMO in
+      guard let vehicleMO = vehicleMO as? VehicleMO else { return }
+      vehicleMO.selected = (vehicleMO == selectedVehicleMO)
+    }
+
+    viewContext.saveOrRollback()
   }
 }
 
@@ -123,10 +197,7 @@ class LoginSheetWindow: NSWindow {
   @IBAction func okayBtnPressed(_ sender: Any) {
     UILogger.info("Ok button pressed on login detail sheet.")
     
-    if usernameTextField.stringValue.isEmpty || passwordTextField.stringValue.isEmpty {
-      return
-    }
-    
+    if usernameTextField.stringValue.isEmpty || passwordTextField.stringValue.isEmpty { return }
     dismissSheet(username: usernameTextField.stringValue, password: passwordTextField.stringValue)
   }
   
