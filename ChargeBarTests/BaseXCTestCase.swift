@@ -19,4 +19,12 @@ class BaseXCTestCase: XCTestCase {
   // MARK: - Properties
   
   var viewContext = PersistenceManager.shared.container.viewContext
+  let mockNetworkRoutes = MockNetworkRoutes()
+  
+  // MARK: - Common lifecycle
+  
+  override func setUp() {
+    super.setUp()
+    HTTPCookieStorage.shared.cookies?.forEach { HTTPCookieStorage.shared.deleteCookie($0) }
+  }
 }
