@@ -5,6 +5,11 @@
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="vehicles" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="VehicleMO" inverseName="account" inverseEntity="VehicleMO"/>
     </entity>
+    <entity name="CapabilityMO" representedClassName="CapabilityMO" syncable="YES" codeGenerationType="class">
+        <attribute name="carModel" optional="YES" attributeType="String"/>
+        <attribute name="engineType" optional="YES" attributeType="String"/>
+        <relationship name="vehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleMO" inverseName="capability" inverseEntity="VehicleMO"/>
+    </entity>
     <entity name="VehicleMO" representedClassName="VehicleMO" syncable="YES" codeGenerationType="class">
         <attribute name="licensePlate" optional="YES" attributeType="String"/>
         <attribute name="modelDescription" optional="YES" attributeType="String"/>
@@ -13,10 +18,12 @@
         <attribute name="selected" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="vin" optional="YES" attributeType="String"/>
         <relationship name="account" maxCount="1" deletionRule="Nullify" destinationEntity="AccountMO" inverseName="vehicles" inverseEntity="AccountMO"/>
+        <relationship name="capability" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CapabilityMO" inverseName="vehicle" inverseEntity="CapabilityMO"/>
     </entity>
     <fetchRequest name="FetchSelectedVehicle" entity="VehicleMO" predicateString="selected == 1"/>
     <elements>
-        <element name="AccountMO" positionX="-54" positionY="63" width="128" height="74"/>
-        <element name="VehicleMO" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="AccountMO" positionX="-284.515625" positionY="90.55078125" width="128" height="74"/>
+        <element name="VehicleMO" positionX="-296.046875" positionY="-257.03515625" width="128" height="149"/>
+        <element name="CapabilityMO" positionX="2.12109375" positionY="-233.78125" width="128" height="88"/>
     </elements>
 </model>

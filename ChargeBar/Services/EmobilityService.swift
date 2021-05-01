@@ -12,4 +12,7 @@ struct EmobilityService {
   
   let porscheConnect: PorscheConnect
   
+  func sync() {
+//    porscheConnect.emobility(vehicle: <#T##Vehicle#>, capabilities: <#T##Capabilities#>, completion: <#T##(Result<(Emobility?, HTTPURLResponse?), Error>) -> Void#>)
+  }
 }

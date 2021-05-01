@@ -94,7 +94,6 @@ class BaseUITestCase: XCTestCase {
     mockNetworkRoutes.mockPostLoginAuthSuccessful(router: MockPorscheConnectServer.shared.router)
     mockNetworkRoutes.mockGetApiAuthSuccessful(router: MockPorscheConnectServer.shared.router)
     mockNetworkRoutes.mockPostApiTokenSuccessful(router: MockPorscheConnectServer.shared.router)
-    mockNetworkRoutes.mockGetVehiclesSuccessful(router: MockPorscheConnectServer.shared.router)
   }
   
   fileprivate func mockLoginFailure() {

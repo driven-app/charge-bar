@@ -61,6 +61,8 @@ class PreferencesUITests: BaseUITestCase {
   }
   
   func testAppLoginSuccess() {
+    mockNetworkRoutes.mockGetVehiclesSuccessful(router: MockPorscheConnectServer.shared.router)
+
     loginToPorscheConnect()
   }
     

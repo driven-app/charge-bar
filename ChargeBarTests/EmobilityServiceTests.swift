@@ -9,10 +9,15 @@ import XCTest
 import PorscheConnect
 @testable import ChargeBar
 
-class EmobilityServiceTests: XCTestCase {
+class EmobilityServiceTests: BaseXCTestCase {
 
-  let porscheConnect = PorscheConnect(username: "homer.simpson@icloud.example", password: "Duh!")
+  let service = EmobilityService(porscheConnect: PorscheConnect(username: "homer.simpson@icloud.example", password: "Duh!"))
   
   // MARK: - Tests
 
+  func testSyncWhileNotCharging() {
+    mockNetworkRoutes.mockGetEmobilityNotChargingSuccessful(router: MockPorscheConnectServer.shared.router)
+    
+    service.sync()
+  }
 }

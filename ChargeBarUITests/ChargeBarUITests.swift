@@ -49,6 +49,8 @@ class ChargeBarUITests: BaseUITestCase {
   }
   
   func testBatteryDisplayViewAfterLogin() {
+    mockNetworkRoutes.mockGetVehiclesSuccessful(router: MockPorscheConnectServer.shared.router)
+
     loginToPorscheConnect()
     tapMenuBar()
     

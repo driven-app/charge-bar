@@ -28,7 +28,7 @@ class MockPorscheConnectServer {
     
     try! server.start()
     
-    print("Mock Web Server at port \(server.port): starting")
+    print("Mock Porsche Connect Server at port \(server.port): starting")
     
     DispatchQueue.global().async {
       self.loop.runForever()
@@ -52,6 +52,6 @@ class MockPorscheConnectServer {
     }
     
     semaphore.wait()
-    print("Mock Web Server at port \(server.port): started")
+    print("Mock Porsche Connect Server at port \(server.port): started")
   }
 }
