@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AccountMO" representedClassName="AccountMO" syncable="YES" codeGenerationType="class">
+        <attribute name="provisioned" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="vehicles" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="VehicleMO" inverseName="account" inverseEntity="VehicleMO"/>
     </entity>
@@ -13,8 +14,9 @@
         <attribute name="vin" optional="YES" attributeType="String"/>
         <relationship name="account" maxCount="1" deletionRule="Nullify" destinationEntity="AccountMO" inverseName="vehicles" inverseEntity="AccountMO"/>
     </entity>
+    <fetchRequest name="FetchSelectedVehicle" entity="VehicleMO" predicateString="selected == 1"/>
     <elements>
+        <element name="AccountMO" positionX="-54" positionY="63" width="128" height="74"/>
         <element name="VehicleMO" positionX="-63" positionY="-18" width="128" height="134"/>
-        <element name="AccountMO" positionX="-54" positionY="63" width="128" height="59"/>
     </elements>
 </model>

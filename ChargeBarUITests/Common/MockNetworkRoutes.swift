@@ -76,7 +76,7 @@ final class MockNetworkRoutes {
        "modelType": "A Test Model Type",
        "modelYear": "2021",
        "exteriorColorHex": "#47402e",
-       "attributes": [["name": "licenseplate", "value": "Porsche Taycan"]]
+       "attributes": [["name": "licenseplate", "value": "TAY-CAN"]]
       ]
     ]
   }

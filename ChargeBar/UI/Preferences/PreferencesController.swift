@@ -122,12 +122,14 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
     viewContext.saveOrRollback()
     
     if let vehicles = vehicles {
-      vehicles.forEach { vehicle in
+      vehicles.enumerated().forEach { (index, vehicle) in
         let vehicleMO = VehicleMO(context: viewContext)
         vehicleMO.modelDescription = vehicle.modelDescription
         vehicleMO.modelYear = vehicle.modelYear
         vehicleMO.modelType = vehicle.modelType
         vehicleMO.vin = vehicle.vin
+        vehicleMO.selected = (index == 0)
+        
         if let attributes = vehicle.attributes, let licensePlateAttribute = attributes.first(where: {$0.name == "licenseplate"}) {
           vehicleMO.licensePlate = licensePlateAttribute.value
         }
@@ -135,9 +137,11 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
         accountMO.addToVehicles(vehicleMO)
       }
     }
-    
+            
     viewContext.saveOrRollback()
     forceUpdateBindings()
+    
+    accountMO.markProvisioned()
   }
   
   private func handleLoginFailure() {
@@ -174,8 +178,9 @@ extension PreferencesViewController: NSTableViewDelegate  {
     guard let selectedObjects = vehiclesArrayController.selectedObjects,
           let selectedVehicleMO = selectedObjects.first as? VehicleMO,
           let accountMO = AppDelegate.persistenceManager.findFirst(entityName: AccountMO.className(), context: viewContext) as? AccountMO,
-          let vehicles = accountMO.vehicles else { return }
-
+          let vehicles = accountMO.vehicles,
+          accountMO.provisioned else { return }
+    
     vehicles.forEach { vehicleMO in
       guard let vehicleMO = vehicleMO as? VehicleMO else { return }
       vehicleMO.selected = (vehicleMO == selectedVehicleMO)

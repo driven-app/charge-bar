@@ -10,11 +10,12 @@ import Cocoa
 import KeychainSwift
 import PorscheConnect
 
-final class MenuController: NSObject, NSMenuDelegate {
+final class MenuController: NSObject {
   
   // MARK: - Properties
   
   @IBOutlet weak var menu: NSMenu!
+  @IBOutlet weak var batteryViewController: BatteryViewController!
   
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
@@ -89,4 +90,16 @@ final class MenuController: NSObject, NSMenuDelegate {
     KeychainSwift().delete(kPasswordKeyForKeychain)
   }
   
+}
+
+// MARK: - Menu Delegate
+
+extension MenuController: NSMenuDelegate {
+  public func menuWillOpen(_ menu: NSMenu) {
+    batteryViewController.viewWillAppear()
+  }
+  
+  public func menuDidClose(_ menu: NSMenu) {
+    batteryViewController.viewDidDisappear()
+  }
 }

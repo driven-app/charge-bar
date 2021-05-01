@@ -83,7 +83,7 @@
                                     <rect key="frame" x="1" y="1" width="478" height="267"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" autosaveName="" rowHeight="24" rowSizeStyle="automatic" headerView="XVq-P6-qSn" viewBased="YES" id="3Ta-hr-evv">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="VehiclesTable" rowHeight="24" rowSizeStyle="automatic" headerView="XVq-P6-qSn" viewBased="YES" id="3Ta-hr-evv">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="239"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
