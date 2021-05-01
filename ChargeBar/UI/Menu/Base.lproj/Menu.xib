@@ -14,10 +14,17 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="MenuController" customModule="ChargeBar" customModuleProvider="target">
             <connections>
+                <outlet property="batteryViewController" destination="vFB-fT-WUK" id="ZFU-54-WPG"/>
                 <outlet property="menu" destination="IZy-8b-bGH" id="Yen-W9-J3O"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <viewController id="vFB-fT-WUK" userLabel="Battery View Controller" customClass="BatteryViewController" customModule="ChargeBar" customModuleProvider="target">
+            <connections>
+                <outlet property="currentChargePercentageTextField" destination="UVh-k6-lBb" id="Ezx-LN-k4Y"/>
+                <outlet property="licensePlateTextField" destination="nHe-PV-6qt" id="VeH-7Z-Kmf"/>
+            </connections>
+        </viewController>
         <menu id="IZy-8b-bGH">
             <items>
                 <menuItem id="KeO-YT-FNM">
@@ -44,6 +51,9 @@
                     </connections>
                 </menuItem>
             </items>
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="8x0-l1-qCS"/>
+            </connections>
             <point key="canvasLocation" x="-598" y="-444"/>
         </menu>
         <customView id="orq-C3-r0D" userLabel="Battery View">
@@ -57,6 +67,7 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <accessibility description="Vehicle License Plate" help="The license plate of the selected vehicle" identifier="LicensePlateTextField"/>
                 </textField>
                 <levelIndicator verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yDg-6c-1QV">
                     <rect key="frame" x="20" y="9" width="255" height="18"/>
@@ -69,6 +80,7 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <accessibility description="Current Charge Percentage" help="The current state of charge of the selected vehicle" identifier="CurrentChargePercentageTextField"/>
                 </textField>
             </subviews>
             <constraints>
