@@ -83,14 +83,14 @@
                                     <rect key="frame" x="1" y="1" width="478" height="267"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="24" headerView="XVq-P6-qSn" id="3Ta-hr-evv">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" autosaveName="" rowHeight="24" rowSizeStyle="automatic" headerView="XVq-P6-qSn" viewBased="YES" id="3Ta-hr-evv">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="239"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="Name" editable="NO" width="116" minWidth="40" maxWidth="1000" id="JRs-KK-Krc">
+                                                <tableColumn editable="NO" width="116" minWidth="40" maxWidth="1000" id="JRs-KK-Krc">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -99,17 +99,46 @@
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        <accessibility identifier="NameCell"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="KBG-Zf-jkp">
+                                                            <rect key="frame" x="18" y="0.0" width="114" height="24"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0FI-1J-4I8">
+                                                                    <rect key="frame" x="0.0" y="4" width="114" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="eSw-bZ-yG1">
+                                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <accessibility identifier="NameCell"/>
+                                                                    <connections>
+                                                                        <binding destination="KBG-Zf-jkp" name="value" keyPath="objectValue.modelDescription" id="Dii-Ya-8LY">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="0FI-1J-4I8" id="IwK-15-h4H"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
                                                     <connections>
-                                                        <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.modelDescription" id="Je0-YN-gaj">
+                                                        <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.modelDescription" id="fQV-yB-VBu">
                                                             <dictionary key="options">
-                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
                                                             </dictionary>
                                                         </binding>
                                                     </connections>
                                                 </tableColumn>
-                                                <tableColumn identifier="License Plate" editable="NO" width="127" minWidth="10" maxWidth="3.4028234663852886e+38" id="g9Z-Fb-tQf">
+                                                <tableColumn editable="NO" width="127" minWidth="10" maxWidth="3.4028234663852886e+38" id="g9Z-Fb-tQf">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="License Plate">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,13 +147,46 @@
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        <accessibility identifier="LicensePlateCell"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="5ds-CC-322">
+                                                            <rect key="frame" x="149" y="0.0" width="127" height="24"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHK-zo-KLc">
+                                                                    <rect key="frame" x="0.0" y="4" width="127" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Csi-o2-JBd">
+                                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <accessibility identifier="LicensePlateCell"/>
+                                                                    <connections>
+                                                                        <binding destination="5ds-CC-322" name="value" keyPath="objectValue.licensePlate" id="Yv2-jW-s66">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="zHK-zo-KLc" id="RCf-Qq-RHz"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
                                                     <connections>
-                                                        <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.licensePlate" id="wgx-m4-9Zy"/>
+                                                        <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.licensePlate" id="i6R-Fp-txB">
+                                                            <dictionary key="options">
+                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                            </dictionary>
+                                                        </binding>
                                                     </connections>
                                                 </tableColumn>
-                                                <tableColumn identifier="VIN" editable="NO" width="189" minWidth="40" maxWidth="1000" id="7sX-VT-4nT">
+                                                <tableColumn editable="NO" width="189" minWidth="40" maxWidth="1000" id="7sX-VT-4nT">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="VIN">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -133,15 +195,49 @@
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        <accessibility identifier="VINCell"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="ZiT-gO-alO">
+                                                            <rect key="frame" x="293" y="0.0" width="186" height="24"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HB1-Ye-pf0">
+                                                                    <rect key="frame" x="0.0" y="4" width="186" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="E4k-7f-yWN">
+                                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <accessibility identifier="VINCell"/>
+                                                                    <connections>
+                                                                        <binding destination="ZiT-gO-alO" name="value" keyPath="objectValue.vin" id="l5k-Sk-p06">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="HB1-Ye-pf0" id="MUO-o2-Shk"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
                                                     <connections>
-                                                        <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.vin" id="Kpg-RN-ueS"/>
+                                                        <binding destination="9DO-1q-trV" name="value" keyPath="arrangedObjects.vin" id="Zjg-a0-5zX">
+                                                            <dictionary key="options">
+                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                            </dictionary>
+                                                        </binding>
                                                     </connections>
                                                 </tableColumn>
                                             </tableColumns>
                                             <accessibility description="Vehicles" help="List of vehicles in your My Porsche account" identifier="VehiclesTable"/>
                                             <connections>
+                                                <binding destination="9DO-1q-trV" name="content" keyPath="arrangedObjects" id="Wwa-bN-3pN"/>
                                                 <outlet property="delegate" destination="dLl-eN-JlX" id="M2H-qb-p5O"/>
                                             </connections>
                                         </tableView>
@@ -181,7 +277,7 @@
                     <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                     <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                     <rect key="contentRect" x="245" y="301" width="480" height="196"/>
-                    <rect key="screenRect" x="0.0" y="0.0" width="2880" height="1595"/>
+                    <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
                     <view key="contentView" id="Pjg-Yj-7Dt">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="196"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -268,7 +364,7 @@ Gw
                 <userDefaultsController representsSharedInstance="YES" id="MlW-X3-C1T"/>
                 <arrayController mode="entity" entityName="VehicleMO" editable="NO" automaticallyPreparesContent="YES" id="9DO-1q-trV">
                     <connections>
-                        <binding destination="dLl-eN-JlX" name="managedObjectContext" keyPath="self.viewContext" id="ynQ-dx-Qm4"/>
+                        <binding destination="dLl-eN-JlX" name="managedObjectContext" keyPath="viewContext" id="1X0-LK-Uic"/>
                     </connections>
                 </arrayController>
             </objects>
