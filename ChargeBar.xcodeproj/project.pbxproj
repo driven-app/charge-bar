@@ -70,6 +70,7 @@
 		6D682CDE25D33AFD007E675A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6D682CED25D33D72007E675A /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		6D682CF225D33DA5007E675A /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		6D726C76263DAE730076D44B /* workflows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = workflows; path = .github/workflows; sourceTree = "<group>"; };
 		6DC16F202635E86B00FCCF55 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		6DC16F252635E94E00FCCF55 /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
 		6DC16F2A2635E99E00FCCF55 /* BaseXCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXCTestCase.swift; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 				6D682CBB25D3336E007E675A /* ChargeBarUITests */,
 				6D682C9E25D3336D007E675A /* Products */,
 				6D07948B26367F77007CA490 /* Frameworks */,
+				6D726C76263DAE730076D44B /* workflows */,
 			);
 			sourceTree = "<group>";
 		};

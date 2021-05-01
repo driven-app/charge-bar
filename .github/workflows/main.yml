@@ -1,0 +1,28 @@
+# ---- main workflow ---------------------------------------------------------------------------------------------
+  
+name: ChargeBar
+
+# ---- trigger ---------------------------------------------------------------------------------------------------
+
+#on:
+#  push:
+#    branches:
+#      - '**'        # matches every branch
+      
+# ---- jobs (run in parallel) ------------------------------------------------------------------------------------
+
+jobs:
+
+  # ---- test ------------------------------------------------------------------------------------------=---------
+
+#  test:
+#    name: Testing ChargeBar
+#    runs-on: macOS-latest
+#    timeout-minutes: 8
+#    steps:
+#      - name: Check out repository code
+#        uses: actions/checkout@v2
+#      - name: Force XCode 12.4
+#        run: sudo xcode-select -switch /Applications/Xcode_12.4.app
+#      - name: Tests
+#        run: xcodebuild test -destination "platform=macOS" -scheme "ChargeBar"
