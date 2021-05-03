@@ -24,12 +24,16 @@ struct EmobilityService {
           let capabilities = buidCapabilitiesStruct()
     else { return }
     
+    ServiceLogger.info("Emobility sync: Starting.")
+    
     porscheConnect.emobility(vehicle: vehicle, capabilities: capabilities) { result in
       switch result {
       case .success(let (emobility, _)):
         handleEmobility(emobility: emobility, context: viewContext)
+        ServiceLogger.info("Emobility sync: Completed successfully.")
         completion(.success(()))
       case .failure(let error):
+        ServiceLogger.info("Emobility sync: Completed with failure.")
         completion(.failure(error))
       }
     }
@@ -51,9 +55,9 @@ struct EmobilityService {
     emobilityMO.ledState = emobility.batteryChargeStatus.ledState
     emobilityMO.lockState = emobility.batteryChargeStatus.lockState
     emobilityMO.plugState = emobility.batteryChargeStatus.plugState
-    emobilityMO.remainingERange = Int16(emobility.batteryChargeStatus.remainingERange.value)
+    emobilityMO.remainingERange = Int32(emobility.batteryChargeStatus.remainingERange.value)
     emobilityMO.remainingERangeUnit = emobility.batteryChargeStatus.remainingERange.unit
-    emobilityMO.stateOfChargeInPercentage = Int16(emobility.batteryChargeStatus.stateOfChargeInPercentage)
+    emobilityMO.stateOfChargeInPercentage = Int32(emobility.batteryChargeStatus.stateOfChargeInPercentage)
     
     vehicleMO.emobility = emobilityMO
     

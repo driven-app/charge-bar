@@ -21,6 +21,8 @@ struct VehiclesService {
   func sync(completion: @escaping (Result<(), Error>) -> Void) {
     guard let viewContext = accountMO.managedObjectContext else { return }
     
+    ServiceLogger.info("Starting to sync vehicles.")
+    
     porscheConnect.vehicles() { result in
       switch result {
       case .success(let (vehicles, _)):

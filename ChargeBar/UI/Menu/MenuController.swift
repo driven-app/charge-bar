@@ -35,7 +35,7 @@ final class MenuController: NSObject {
       return
     }
     
-//    initPorscheConnect()
+    initPorscheConnect()
     
     LifecycleLogger.info("Launched.")
   }
@@ -71,6 +71,16 @@ final class MenuController: NSObject {
   }
   
   // MARK: - Actions
+  
+  @IBAction func refreshBtnPressed(_ sender: Any) {
+    UILogger.info("Refresh menu item pressed.")
+    guard let porscheConenct = AppDelegate.porscheConnect,
+          let selectedVehicle = findSelectedVehicle()
+    else { return }
+
+    EmobilityService(porscheConnect: porscheConenct, vehicleMO: selectedVehicle).sync { _ in
+    }
+  }
   
   @IBAction func preferencesBtnPressed(_ sender: Any) {
     UILogger.info("Preferences menu item pressed.")

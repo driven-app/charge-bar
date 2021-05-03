@@ -20,9 +20,9 @@
         <attribute name="ledState" optional="YES" attributeType="String"/>
         <attribute name="lockState" attributeType="String" defaultValueString="UNLOCKED"/>
         <attribute name="plugState" attributeType="String" defaultValueString="DISCONNECTED"/>
-        <attribute name="remainingERange" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="remainingERange" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="remainingERangeUnit" attributeType="String" defaultValueString="KILOMETER"/>
-        <attribute name="stateOfChargeInPercentage" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stateOfChargeInPercentage" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="syncDate" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="vehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleMO" inverseName="emobility" inverseEntity="VehicleMO"/>
     </entity>

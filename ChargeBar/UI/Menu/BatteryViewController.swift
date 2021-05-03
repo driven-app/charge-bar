@@ -16,6 +16,7 @@ final class BatteryViewController: NSViewController {
   
   @IBOutlet weak var licensePlateTextField: NSTextField!
   @IBOutlet weak var currentChargePercentageTextField: NSTextField!
+  @IBOutlet weak var batteryLevelIndicator: NSLevelIndicator!
   
   // MARK: - Lifecycle
   
@@ -32,20 +33,16 @@ final class BatteryViewController: NSViewController {
           let licensePlate = vehicleMO.licensePlate else { return }
     
     licensePlateTextField.stringValue = licensePlate
+    
+    guard let emobilityMO = vehicleMO.emobility else { return }
+    
+    updateBattery(percentage: emobilityMO.stateOfChargeInPercentage)
   }
 
   // MARK: - Private functions
   
-  fileprivate func findSelectedVehicle() -> VehicleMO? {
-    guard let fetchRequest = AppDelegate.persistenceManager.container.managedObjectModel.fetchRequestTemplate(forName: "FetchSelectedVehicle") else { return nil }
-    
-    do {
-      let results = try AppDelegate.persistenceManager.container.viewContext.fetch(fetchRequest)
-      return results.first as! VehicleMO?
-    } catch {
-      CoreDataLogger.error("Error running FetchSelectedVehicle fetch request template.)")
-      return nil
-    }
+  fileprivate func updateBattery(percentage: Int32) {
+    currentChargePercentageTextField.stringValue = "\(percentage)%"
+    batteryLevelIndicator.intValue = percentage
   }
-  
 }
