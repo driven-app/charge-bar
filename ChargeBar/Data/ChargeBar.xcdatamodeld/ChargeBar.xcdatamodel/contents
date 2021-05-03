@@ -10,6 +10,22 @@
         <attribute name="engineType" attributeType="String"/>
         <relationship name="vehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleMO" inverseName="capabilities" inverseEntity="VehicleMO"/>
     </entity>
+    <entity name="EmobilityMO" representedClassName="EmobilityMO" syncable="YES" codeGenerationType="class">
+        <attribute name="chargingInDCMode" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="chargingMode" attributeType="String" defaultValueString="OFF"/>
+        <attribute name="chargingPower" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="chargingState" attributeType="String" defaultValueString="OFF"/>
+        <attribute name="directCharge" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="ledColor" optional="YES" attributeType="String"/>
+        <attribute name="ledState" optional="YES" attributeType="String"/>
+        <attribute name="lockState" attributeType="String" defaultValueString="UNLOCKED"/>
+        <attribute name="plugState" attributeType="String" defaultValueString="DISCONNECTED"/>
+        <attribute name="remainingERange" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="remainingERangeUnit" attributeType="String" defaultValueString="KILOMETER"/>
+        <attribute name="stateOfChargeInPercentage" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="syncDate" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="vehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleMO" inverseName="emobility" inverseEntity="VehicleMO"/>
+    </entity>
     <entity name="VehicleMO" representedClassName="VehicleMO" syncable="YES" codeGenerationType="class">
         <attribute name="licensePlate" optional="YES" attributeType="String"/>
         <attribute name="modelDescription" optional="YES" attributeType="String"/>
@@ -19,11 +35,13 @@
         <attribute name="vin" optional="YES" attributeType="String"/>
         <relationship name="account" maxCount="1" deletionRule="Nullify" destinationEntity="AccountMO" inverseName="vehicles" inverseEntity="AccountMO"/>
         <relationship name="capabilities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CapabilitiesMO" inverseName="vehicle" inverseEntity="CapabilitiesMO"/>
+        <relationship name="emobility" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmobilityMO" inverseName="vehicle" inverseEntity="EmobilityMO"/>
     </entity>
     <fetchRequest name="FetchSelectedVehicle" entity="VehicleMO" predicateString="selected == 1" fetchLimit="1" fetchBatchSize="1"/>
     <elements>
         <element name="AccountMO" positionX="-284.515625" positionY="90.55078125" width="128" height="74"/>
         <element name="CapabilitiesMO" positionX="2.12109375" positionY="-233.78125" width="128" height="74"/>
-        <element name="VehicleMO" positionX="-296.046875" positionY="-257.03515625" width="128" height="149"/>
+        <element name="VehicleMO" positionX="-296.046875" positionY="-257.03515625" width="128" height="164"/>
+        <element name="EmobilityMO" positionX="-144" positionY="-99" width="128" height="239"/>
     </elements>
 </model>
