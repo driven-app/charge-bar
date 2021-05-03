@@ -22,21 +22,23 @@ final class BatteryViewController: NSViewController {
   
   override func viewWillAppear() {
     super.viewWillAppear()
-    vehicleMO = findSelectedVehicle()
     prepareBatteryViewForDisplay()
   }
   
   // MARK: - UI
   
   fileprivate func prepareBatteryViewForDisplay() {
-    guard let vehicleMO = vehicleMO,
-          let licensePlate = vehicleMO.licensePlate else { return }
+    guard let results = PersistenceManager.shared.findWithFetchRequestTemplate(fetchRequestTemplateName: "FetchSelectedVehicle", context: PersistenceManager.shared.container.viewContext) as? [VehicleMO],
+          let vehicleMO = results.first
+    else { return }
     
-    licensePlateTextField.stringValue = licensePlate
+    if let licensePlate = vehicleMO.licensePlate {
+      licensePlateTextField.stringValue = licensePlate
+    }
     
-    guard let emobilityMO = vehicleMO.emobility else { return }
-    
-    updateBattery(percentage: emobilityMO.stateOfChargeInPercentage)
+    if let emobilityMO = vehicleMO.emobility {
+      updateBattery(percentage: emobilityMO.stateOfChargeInPercentage)
+    }
   }
 
   // MARK: - Private functions
