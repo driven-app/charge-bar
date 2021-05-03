@@ -21,6 +21,7 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <viewController id="vFB-fT-WUK" userLabel="Battery View Controller" customClass="BatteryViewController" customModule="ChargeBar" customModuleProvider="target">
             <connections>
+                <outlet property="batteryLevelIndicator" destination="yDg-6c-1QV" id="5AF-mF-lct"/>
                 <outlet property="currentChargePercentageTextField" destination="UVh-k6-lBb" id="Ezx-LN-k4Y"/>
                 <outlet property="licensePlateTextField" destination="nHe-PV-6qt" id="VeH-7Z-Kmf"/>
             </connections>
@@ -34,8 +35,10 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="fKu-np-bId"/>
-                <menuItem title="Item" id="icm-y8-hB9">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Refresh" keyEquivalent="r" id="icm-y8-hB9">
+                    <connections>
+                        <action selector="refreshBtnPressed:" target="Voe-Tx-rLC" id="4cH-Ep-w2t"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="KcR-Gb-LOM"/>
                 <menuItem title="Preferences..." keyEquivalent="," id="BTo-25-UYm">
