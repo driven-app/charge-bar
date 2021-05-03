@@ -95,53 +95,35 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
     AppDelegate.porscheConnect = PorscheConnect(username: username,
                                                 password: password,
                                                 environment: AppDelegate.isRunningInTestMode() ? .Test : .Germany)
-        
-    AppDelegate.porscheConnect!.vehicles() { result in
-      DispatchQueue.main.async {
-        switch result {
-        case .success(let (vehicles, _)):
-          self.handleLoginSuccess(username: username, password: password, vehicles: vehicles)
-        case .failure(_):
-          self.handleLoginFailure()
-        }
-
-        self.progressIndicator.stopAnimation(nil)
-        self.accountStatusTextField.isHidden = false
+    
+    guard let porscheConnect = AppDelegate.porscheConnect else { return }
+    
+    porscheConnect.auth(application: .Portal) { [self] result in
+      switch result {
+      case .success(_):
+        handleLoginSuccess(porscheConnect: porscheConnect, username: username, password: password)
+      case .failure(_):
+        handleLoginFailure()
       }
+      
+      progressIndicator.stopAnimation(nil)
+      accountStatusTextField.isHidden = false
     }
   }
   
   // MARK: - Private Functions
   
-  private func handleLoginSuccess(username: String, password: String, vehicles: [Vehicle]?) {
+  private func handleLoginSuccess(porscheConnect: PorscheConnect, username: String, password: String) {
     let keychain = KeychainSwift()
     keychain.set(password, forKey: kPasswordKeyForKeychain)
-    
+
     let accountMO = AccountMO(context: viewContext)
     accountMO.username = username
-    viewContext.saveOrRollback()
     
-    if let vehicles = vehicles {
-      vehicles.enumerated().forEach { (index, vehicle) in
-        let vehicleMO = VehicleMO(context: viewContext)
-        vehicleMO.modelDescription = vehicle.modelDescription
-        vehicleMO.modelYear = vehicle.modelYear
-        vehicleMO.modelType = vehicle.modelType
-        vehicleMO.vin = vehicle.vin
-        vehicleMO.selected = (index == 0)
-        
-        if let attributes = vehicle.attributes, let licensePlateAttribute = attributes.first(where: {$0.name == "licenseplate"}) {
-          vehicleMO.licensePlate = licensePlateAttribute.value
-        }
-        
-        accountMO.addToVehicles(vehicleMO)
-      }
+    VehiclesService(porscheConnect: porscheConnect, accountMO: accountMO).sync { [self] result in
+      forceUpdateBindings()
+      accountMO.markProvisioned()
     }
-            
-    viewContext.saveOrRollback()
-    forceUpdateBindings()
-    
-    accountMO.markProvisioned()
   }
   
   private func handleLoginFailure() {

@@ -11,6 +11,8 @@ import PorscheConnect
 
 struct VehiclesService {
   
+  // MARK: - Properties
+  
   let porscheConnect: PorscheConnect
   let accountMO: AccountMO
   
@@ -22,8 +24,10 @@ struct VehiclesService {
     porscheConnect.vehicles() { result in
       switch result {
       case .success(let (vehicles, _)):
-        handleVehicles(vehicles: vehicles, context: viewContext)
-        completion(.success(()))
+        DispatchQueue.global(qos: .userInitiated).async {
+          handleVehicles(vehicles: vehicles, context: viewContext)
+          DispatchQueue.main.async {completion(.success(())) }
+        }
       case .failure(let error):
         completion(.failure(error))
         break
@@ -34,7 +38,10 @@ struct VehiclesService {
   // MARK: - Private
   
   private func handleVehicles(vehicles: [Vehicle]?, context: NSManagedObjectContext) {
-    guard let vehicles = vehicles else { return }
+    guard let existingVehicleMOs = accountMO.vehicles,
+            let vehicles = vehicles else { return }
+    
+    accountMO.removeFromVehicles(existingVehicleMOs)
     
     vehicles.enumerated().forEach { (index, vehicle) in    
       let vehicleMO = VehicleMO(context: context)
@@ -49,8 +56,29 @@ struct VehiclesService {
       }
       
       accountMO.addToVehicles(vehicleMO)
+      
+      let semaphore = DispatchSemaphore(value: 0)
+        handleCapabilitiesForVehicle(vehicle: vehicle, vehicleMO: vehicleMO, context: context, semaphore: semaphore)
+      _ = semaphore.wait(wallTimeout: .distantFuture)
     }
     
     context.saveOrRollback()
+  }
+  
+  private func handleCapabilitiesForVehicle(vehicle: Vehicle, vehicleMO: VehicleMO, context: NSManagedObjectContext, semaphore: DispatchSemaphore) {
+    porscheConnect.capabilities(vehicle: vehicle) { result in
+      switch result {
+      case .success(let (capability, _)):
+        guard let capability = capability else { break }
+
+        let capabilitiesMO = CapabilitiesMO(context: context)
+        capabilitiesMO.carModel = capability.carModel
+        capabilitiesMO.engineType = capability.engineType
+        vehicleMO.capabilities = capabilitiesMO
+      case .failure(_):
+        break
+      }
+      semaphore.signal()
+    }
   }
 }

@@ -38,11 +38,16 @@ class VehiclesServiceTests: BaseXCTestCase {
     let expectation = self.expectation(description: "Network Expectation")
     mockLoginSuccess()
     mockNetworkRoutes.mockGetVehiclesSuccessful(router: MockPorscheConnectServer.shared.router)
-
+    mockNetworkRoutes.mockGetCapabilitiesSuccessful(router: MockPorscheConnectServer.shared.router)
+    
     XCTAssertEqual(0, accountMO!.vehicles!.count)
-    service!.sync { _ in
+    
+    service!.sync { (result) in
       expectation.fulfill()
       XCTAssertEqual(1, self.accountMO!.vehicles!.count)
+      
+      let vehicleMO = self.accountMO!.vehicles!.firstObject as! VehicleMO
+      XCTAssertNotNil(vehicleMO.capabilities)
     }
     
     waitForExpectations(timeout: kDefaultTestTimeout, handler: nil)

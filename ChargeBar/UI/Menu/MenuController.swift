@@ -44,7 +44,8 @@ final class MenuController: NSObject {
   
   private func setupMenuUI() {
     if let button = statusItem.button {
-      button.image = NSImage(systemSymbolName: "bolt.car", accessibilityDescription: kBlankString)
+      button.image = NSImage(named: "MenuIcon")
+      button.image?.isTemplate = true
     }
     
     statusItem.isVisible = true
