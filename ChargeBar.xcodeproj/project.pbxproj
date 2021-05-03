@@ -23,7 +23,7 @@
 		6D682CD425D337EF007E675A /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CD325D337EF007E675A /* MenuController.swift */; };
 		6D682CDF25D33AFD007E675A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CDE25D33AFD007E675A /* Constants.swift */; };
 		6D682CEE25D33D72007E675A /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D682CED25D33D72007E675A /* Preferences.storyboard */; };
-		6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CF225D33DA5007E675A /* PreferencesController.swift */; };
+		6D682CF325D33DA5007E675A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D682CF225D33DA5007E675A /* Preferences.swift */; };
 		6D726C78263DB3760076D44B /* BatteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D726C77263DB3760076D44B /* BatteryViewController.swift */; };
 		6D726C7A263DCB670076D44B /* ManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D726C79263DCB670076D44B /* ManagedObjectExtensions.swift */; };
 		6D726C7C263DCBDD0076D44B /* ManagedObjectExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D726C7B263DCBDD0076D44B /* ManagedObjectExtensionTests.swift */; };
@@ -80,7 +80,7 @@
 		6D682CD325D337EF007E675A /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		6D682CDE25D33AFD007E675A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6D682CED25D33D72007E675A /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
-		6D682CF225D33DA5007E675A /* PreferencesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		6D682CF225D33DA5007E675A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		6D726C76263DAE730076D44B /* workflows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = workflows; path = .github/workflows; sourceTree = "<group>"; };
 		6D726C77263DB3760076D44B /* BatteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryViewController.swift; sourceTree = "<group>"; };
 		6D726C79263DCB670076D44B /* ManagedObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectExtensions.swift; sourceTree = "<group>"; };
@@ -233,8 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				6DC16F202635E86B00FCCF55 /* PersistenceManager.swift */,
-				6DC16F322635EAAF00FCCF55 /* ChargeBar.xcdatamodeld */,
 				6D726C79263DCB670076D44B /* ManagedObjectExtensions.swift */,
+				6DC16F322635EAAF00FCCF55 /* ChargeBar.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 		6DEA043525D3D07D00D32547 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				6D682CF225D33DA5007E675A /* PreferencesController.swift */,
+				6D682CF225D33DA5007E675A /* Preferences.swift */,
 				6D682CED25D33D72007E675A /* Preferences.storyboard */,
 			);
 			path = Preferences;
@@ -415,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D726C8B263DE1AC0076D44B /* VehiclesService.swift in Sources */,
-				6D682CF325D33DA5007E675A /* PreferencesController.swift in Sources */,
+				6D682CF325D33DA5007E675A /* Preferences.swift in Sources */,
 				6DC16F212635E86B00FCCF55 /* PersistenceManager.swift in Sources */,
 				6D682CD425D337EF007E675A /* MenuController.swift in Sources */,
 				6D726C78263DB3760076D44B /* BatteryViewController.swift in Sources */,

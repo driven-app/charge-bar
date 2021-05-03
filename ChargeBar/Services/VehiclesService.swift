@@ -26,11 +26,10 @@ struct VehiclesService {
       case .success(let (vehicles, _)):
         DispatchQueue.global(qos: .userInitiated).async {
           handleVehicles(vehicles: vehicles, context: viewContext)
-          DispatchQueue.main.async {completion(.success(())) }
+          DispatchQueue.main.async { completion(.success(())) }
         }
       case .failure(let error):
         completion(.failure(error))
-        break
       }
     }
   }
@@ -39,7 +38,7 @@ struct VehiclesService {
   
   private func handleVehicles(vehicles: [Vehicle]?, context: NSManagedObjectContext) {
     guard let existingVehicleMOs = accountMO.vehicles,
-            let vehicles = vehicles else { return }
+          let vehicles = vehicles else { return }
     
     accountMO.removeFromVehicles(existingVehicleMOs)
     
@@ -58,7 +57,7 @@ struct VehiclesService {
       accountMO.addToVehicles(vehicleMO)
       
       let semaphore = DispatchSemaphore(value: 0)
-        handleCapabilitiesForVehicle(vehicle: vehicle, vehicleMO: vehicleMO, context: context, semaphore: semaphore)
+      handleCapabilitiesForVehicle(vehicle: vehicle, vehicleMO: vehicleMO, context: context, semaphore: semaphore)
       _ = semaphore.wait(wallTimeout: .distantFuture)
     }
     
@@ -70,7 +69,7 @@ struct VehiclesService {
       switch result {
       case .success(let (capability, _)):
         guard let capability = capability else { break }
-
+        
         let capabilitiesMO = CapabilitiesMO(context: context)
         capabilitiesMO.carModel = capability.carModel
         capabilitiesMO.engineType = capability.engineType

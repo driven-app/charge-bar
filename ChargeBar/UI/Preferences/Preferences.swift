@@ -1,5 +1,5 @@
 //
-//  PreferencesController.swift
+//  Preferences.swift
 //  ChargeBar
 //
 //  Created by Damien Glancy on 09/02/2021.
@@ -84,13 +84,7 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   
   func loginSheetWantsToDismiss(username: String?, password: String?) {
     view.window?.endSheet(loginSheetWindow)
-    
-    guard let username = username, let password = password else {
-      return
-    }
-    
-    accountStatusTextField.isHidden = true
-    progressIndicator.startAnimation(nil)
+    guard let username = username, let password = password else { return }
     
     AppDelegate.porscheConnect = PorscheConnect(username: username,
                                                 password: password,
@@ -98,16 +92,17 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
     
     guard let porscheConnect = AppDelegate.porscheConnect else { return }
     
+    updateUILoggingIn()
+    
     porscheConnect.auth(application: .Portal) { [self] result in
-      switch result {
-      case .success(_):
-        handleLoginSuccess(porscheConnect: porscheConnect, username: username, password: password)
-      case .failure(_):
-        handleLoginFailure()
+      DispatchQueue.main.async {
+        switch result {
+        case .success(_):
+          handleLoginSuccess(porscheConnect: porscheConnect, username: username, password: password)
+        case .failure(_):
+          handleLoginFailure()
+        }
       }
-      
-      progressIndicator.stopAnimation(nil)
-      accountStatusTextField.isHidden = false
     }
   }
   
@@ -116,19 +111,19 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   private func handleLoginSuccess(porscheConnect: PorscheConnect, username: String, password: String) {
     let keychain = KeychainSwift()
     keychain.set(password, forKey: kPasswordKeyForKeychain)
-
+    
     let accountMO = AccountMO(context: viewContext)
     accountMO.username = username
     
     VehiclesService(porscheConnect: porscheConnect, accountMO: accountMO).sync { [self] result in
-      forceUpdateBindings()
       accountMO.markProvisioned()
+      updateUINoLongerLoggingIn()
     }
   }
   
   private func handleLoginFailure() {
     AppDelegate.porscheConnect = nil
-    forceUpdateBindings()
+    updateUINoLongerLoggingIn()
     
     let alert = NSAlert()
     alert.alertStyle = .critical
@@ -142,6 +137,18 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
       self.willChangeValue(forKey: key)
       self.didChangeValue(forKey: key)
     }
+  }
+  
+  private func updateUILoggingIn() {
+    accountStatusTextField.isHidden = true
+    progressIndicator.startAnimation(nil)
+    forceUpdateBindings()
+  }
+  
+  private func updateUINoLongerLoggingIn() {
+    progressIndicator.stopAnimation(nil)
+    accountStatusTextField.isHidden = false
+    forceUpdateBindings()
   }
 }
 
@@ -167,7 +174,7 @@ extension PreferencesViewController: NSTableViewDelegate  {
       guard let vehicleMO = vehicleMO as? VehicleMO else { return }
       vehicleMO.selected = (vehicleMO == selectedVehicleMO)
     }
-
+    
     viewContext.saveOrRollback()
   }
 }
