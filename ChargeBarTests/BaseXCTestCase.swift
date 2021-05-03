@@ -19,4 +19,24 @@ class BaseXCTestCase: XCTestCase {
   // MARK: - Properties
   
   var viewContext = PersistenceManager.shared.container.viewContext
+  let mockNetworkRoutes = MockNetworkRoutes()
+  
+  // MARK: - Common lifecycle
+  
+  override func setUp() {
+    super.setUp()
+    HTTPCookieStorage.shared.cookies?.forEach { HTTPCookieStorage.shared.deleteCookie($0) }
+  }
+  
+  // MARK: - Common functions
+  
+  func mockLoginSuccess() {
+    mockNetworkRoutes.mockPostLoginAuthSuccessful(router: MockPorscheConnectServer.shared.router)
+    mockNetworkRoutes.mockGetApiAuthSuccessful(router: MockPorscheConnectServer.shared.router)
+    mockNetworkRoutes.mockPostApiTokenSuccessful(router: MockPorscheConnectServer.shared.router)
+  }
+  
+  func mockLoginFailure() {
+    mockNetworkRoutes.mockPostLoginAuthFailure(router: MockPorscheConnectServer.shared.router)
+  }
 }

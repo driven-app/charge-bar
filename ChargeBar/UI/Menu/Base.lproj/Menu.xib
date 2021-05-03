@@ -61,8 +61,8 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nHe-PV-6qt">
-                    <rect key="frame" x="18" y="35" width="71" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Taycan 4S" id="AOM-lr-eHC">
+                    <rect key="frame" x="18" y="35" width="73" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="No Vehicle" id="AOM-lr-eHC">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -71,16 +71,16 @@
                 </textField>
                 <levelIndicator verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yDg-6c-1QV">
                     <rect key="frame" x="20" y="9" width="255" height="18"/>
-                    <levelIndicatorCell key="cell" alignment="left" doubleValue="38" maxValue="100" warningValue="15" criticalValue="5" levelIndicatorStyle="continuousCapacity" id="j4c-SP-mJ6"/>
+                    <levelIndicatorCell key="cell" alignment="left" maxValue="100" warningValue="15" criticalValue="5" levelIndicatorStyle="continuousCapacity" id="j4c-SP-mJ6"/>
                 </levelIndicator>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UVh-k6-lBb">
-                    <rect key="frame" x="244" y="35" width="33" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="38%" id="pfO-kF-stE">
+                    <rect key="frame" x="248" y="35" width="29" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="--%" id="pfO-kF-stE">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
-                    <accessibility description="Current Charge Percentage" help="The current state of charge of the selected vehicle" identifier="CurrentChargePercentageTextField"/>
+                    <accessibility description="Current Charge Percentage" help="The current state of charge of the selected vehicle" identifier="BatteryPercentageTextField"/>
                 </textField>
             </subviews>
             <constraints>

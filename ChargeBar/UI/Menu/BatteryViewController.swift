@@ -21,13 +21,13 @@ final class BatteryViewController: NSViewController {
   
   override func viewWillAppear() {
     super.viewWillAppear()
-    vehicleMO = selectedVehicle()
-    displayVehicle()
+    vehicleMO = findSelectedVehicle()
+    prepareBatteryViewForDisplay()
   }
   
   // MARK: - UI
   
-  fileprivate func displayVehicle() {
+  fileprivate func prepareBatteryViewForDisplay() {
     guard let vehicleMO = vehicleMO,
           let licensePlate = vehicleMO.licensePlate else { return }
     
@@ -36,7 +36,7 @@ final class BatteryViewController: NSViewController {
 
   // MARK: - Private functions
   
-  fileprivate func selectedVehicle() -> VehicleMO? {
+  fileprivate func findSelectedVehicle() -> VehicleMO? {
     guard let fetchRequest = AppDelegate.persistenceManager.container.managedObjectModel.fetchRequestTemplate(forName: "FetchSelectedVehicle") else { return nil }
     
     do {
@@ -44,9 +44,8 @@ final class BatteryViewController: NSViewController {
       return results.first as! VehicleMO?
     } catch {
       CoreDataLogger.error("Error running FetchSelectedVehicle fetch request template.)")
+      return nil
     }
-    
-    return nil
   }
   
 }

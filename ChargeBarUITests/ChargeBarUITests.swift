@@ -38,7 +38,19 @@ class ChargeBarUITests: BaseUITestCase {
     XCTAssertEqual(0, table.tableRows.count)
   }
 
-  func testVehicleIsDisplayed() {
+  func testBatteryDisplayViewBeforeLogin() {
+    let batteryDisplayView = findBatteryDisplayView()
+    
+    XCTAssertTrue(batteryDisplayView.staticTexts["LicensePlateTextField"].exists)
+    XCTAssertEqual("No Vehicle", batteryDisplayView.staticTexts["LicensePlateTextField"].value as! String)
+    
+    XCTAssertTrue(batteryDisplayView.staticTexts["BatteryPercentageTextField"].exists)
+    XCTAssertEqual("--%", batteryDisplayView.staticTexts["BatteryPercentageTextField"].value as! String)
+  }
+  
+  func testBatteryDisplayViewAfterLogin() {
+    mockNetworkRoutes.mockGetVehiclesSuccessful(router: MockPorscheConnectServer.shared.router)
+
     loginToPorscheConnect()
     tapMenuBar()
     
@@ -46,6 +58,9 @@ class ChargeBarUITests: BaseUITestCase {
     
     XCTAssertTrue(batteryDisplayView.staticTexts["LicensePlateTextField"].exists)
     XCTAssertEqual("TAY-CAN", batteryDisplayView.staticTexts["LicensePlateTextField"].value as! String)
+    
+    XCTAssertTrue(batteryDisplayView.staticTexts["BatteryPercentageTextField"].exists)
+    XCTAssertEqual("--%", batteryDisplayView.staticTexts["BatteryPercentageTextField"].value as! String)
   }
   
   // MARK: - Private
