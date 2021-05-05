@@ -78,4 +78,94 @@ class EmobilityServiceTests: BaseXCTestCase {
     
     waitForExpectations(timeout: kDefaultTestTimeout, handler: nil)
   }
+  
+  func testSyncWhileACDirectCharging() {
+    let expectation = self.expectation(description: "Network Expectation")
+
+    mockLoginSuccess()
+    mockNetworkRoutes.mockGetEmobilityACDirectChargingSuccessful(router: MockPorscheConnectServer.shared.router)
+    
+    XCTAssertNil(vehicleMO!.emobility)
+    
+    service!.sync { [self] result in
+      expectation.fulfill()
+      
+      let emobilityMO = vehicleMO!.emobility!
+      XCTAssertNotNil(emobilityMO)
+      XCTAssertFalse(emobilityMO.chargingInDCMode)
+      XCTAssertEqual("AC", emobilityMO.chargingMode)
+      XCTAssertEqual(20.71, emobilityMO.chargingPower)
+      XCTAssertEqual("CHARGING", emobilityMO.chargingState)
+      XCTAssertTrue(emobilityMO.directCharge)
+      XCTAssertEqual("GREEN", emobilityMO.ledColor)
+      XCTAssertEqual("LOCKED", emobilityMO.lockState)
+      XCTAssertEqual("CONNECTED", emobilityMO.plugState)
+      XCTAssertEqual(191, emobilityMO.remainingERange)
+      XCTAssertEqual("KILOMETER", emobilityMO.remainingERangeUnit)
+      XCTAssertEqual(56, emobilityMO.stateOfChargeInPercentage)
+      XCTAssertNotNil(emobilityMO.syncDate)
+    }
+    
+    waitForExpectations(timeout: kDefaultTestTimeout, handler: nil)
+  }
+  
+  func testSyncWhileACTimerCharging() {
+    let expectation = self.expectation(description: "Network Expectation")
+
+    mockLoginSuccess()
+    mockNetworkRoutes.mockGetEmobilityACTimerChargingSuccessful(router: MockPorscheConnectServer.shared.router)
+    
+    XCTAssertNil(vehicleMO!.emobility)
+    
+    service!.sync { [self] result in
+      expectation.fulfill()
+      
+      let emobilityMO = vehicleMO!.emobility!
+      XCTAssertNotNil(emobilityMO)
+      XCTAssertFalse(emobilityMO.chargingInDCMode)
+      XCTAssertEqual("AC", emobilityMO.chargingMode)
+      XCTAssertEqual(6.58, emobilityMO.chargingPower)
+      XCTAssertEqual("CHARGING", emobilityMO.chargingState)
+      XCTAssertFalse(emobilityMO.directCharge)
+      XCTAssertEqual("GREEN", emobilityMO.ledColor)
+      XCTAssertEqual("LOCKED", emobilityMO.lockState)
+      XCTAssertEqual("CONNECTED", emobilityMO.plugState)
+      XCTAssertEqual(191, emobilityMO.remainingERange)
+      XCTAssertEqual("KILOMETER", emobilityMO.remainingERangeUnit)
+      XCTAssertEqual(56, emobilityMO.stateOfChargeInPercentage)
+      XCTAssertNotNil(emobilityMO.syncDate)
+    }
+    
+    waitForExpectations(timeout: kDefaultTestTimeout, handler: nil)
+  }
+  
+  func testSyncWhileDCCharging() {
+    let expectation = self.expectation(description: "Network Expectation")
+
+    mockLoginSuccess()
+    mockNetworkRoutes.mockGetEmobilityDCChargingSuccessful(router: MockPorscheConnectServer.shared.router)
+    
+    XCTAssertNil(vehicleMO!.emobility)
+    
+    service!.sync { [self] result in
+      expectation.fulfill()
+      
+      let emobilityMO = vehicleMO!.emobility!
+      XCTAssertNotNil(emobilityMO)
+      XCTAssertTrue(emobilityMO.chargingInDCMode)
+      XCTAssertEqual("DC", emobilityMO.chargingMode)
+      XCTAssertEqual(48.56, emobilityMO.chargingPower)
+      XCTAssertEqual("CHARGING", emobilityMO.chargingState)
+      XCTAssertFalse(emobilityMO.directCharge)
+      XCTAssertEqual("GREEN", emobilityMO.ledColor)
+      XCTAssertEqual("LOCKED", emobilityMO.lockState)
+      XCTAssertEqual("CONNECTED", emobilityMO.plugState)
+      XCTAssertEqual(191, emobilityMO.remainingERange)
+      XCTAssertEqual("KILOMETER", emobilityMO.remainingERangeUnit)
+      XCTAssertEqual(56, emobilityMO.stateOfChargeInPercentage)
+      XCTAssertNotNil(emobilityMO.syncDate)
+    }
+    
+    waitForExpectations(timeout: kDefaultTestTimeout, handler: nil)
+  }
 }

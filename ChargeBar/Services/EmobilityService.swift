@@ -44,7 +44,9 @@ struct EmobilityService {
   func handleEmobility(emobility: Emobility?, context: NSManagedObjectContext) {
     guard let emobility = emobility else { return }
     
-    PersistenceManager.shared.deleteAll(entityName: "EmobilityMO", context: context)
+    if let existingEmobilityMO = vehicleMO.emobility {
+      context.delete(existingEmobilityMO)
+    }
     
     let emobilityMO = EmobilityMO(context: context)
     emobilityMO.syncDate = Date()
