@@ -43,8 +43,13 @@ struct PersistenceManager {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
     fetchRequest.fetchLimit = 1
     let results = try! context.fetch(fetchRequest)
-    
     return results.first
+  }
+  
+  func findWithFetchRequestTemplate(fetchRequestTemplateName templateName: String, context: NSManagedObjectContext) -> Any? {
+    guard let fetchRequest = container.managedObjectModel.fetchRequestTemplate(forName: templateName) else { return nil }
+    let results = try! context.fetch(fetchRequest)
+    return results
   }
   
   func deleteAll(entityName: String, context: NSManagedObjectContext) {

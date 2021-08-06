@@ -44,6 +44,10 @@ struct EmobilityService {
   func handleEmobility(emobility: Emobility?, context: NSManagedObjectContext) {
     guard let emobility = emobility else { return }
     
+    if let existingEmobilityMO = vehicleMO.emobility {
+      context.delete(existingEmobilityMO)
+    }
+    
     let emobilityMO = EmobilityMO(context: context)
     emobilityMO.syncDate = Date()
     emobilityMO.chargingInDCMode = emobility.batteryChargeStatus.chargingInDCMode

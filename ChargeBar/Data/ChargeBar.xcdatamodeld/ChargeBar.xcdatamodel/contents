@@ -16,7 +16,7 @@
         <attribute name="chargingPower" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="chargingState" attributeType="String" defaultValueString="OFF"/>
         <attribute name="directCharge" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="ledColor" optional="YES" attributeType="String"/>
+        <attribute name="ledColor" attributeType="String" defaultValueString="NONE"/>
         <attribute name="ledState" optional="YES" attributeType="String"/>
         <attribute name="lockState" attributeType="String" defaultValueString="UNLOCKED"/>
         <attribute name="plugState" attributeType="String" defaultValueString="DISCONNECTED"/>
@@ -41,7 +41,7 @@
     <elements>
         <element name="AccountMO" positionX="-284.515625" positionY="90.55078125" width="128" height="74"/>
         <element name="CapabilitiesMO" positionX="2.12109375" positionY="-233.78125" width="128" height="74"/>
+        <element name="EmobilityMO" positionX="-144" positionY="-99" width="128" height="14"/>
         <element name="VehicleMO" positionX="-296.046875" positionY="-257.03515625" width="128" height="164"/>
-        <element name="EmobilityMO" positionX="-144" positionY="-99" width="128" height="239"/>
     </elements>
 </model>

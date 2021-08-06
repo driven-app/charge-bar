@@ -101,10 +101,30 @@ class PersistenceManagerTests: BaseXCTestCase {
 
   func testDeleteAll() {
     _ = AccountMO(context: viewContext)
-    _ = viewContext.saveOrRollback()
+    viewContext.saveOrRollback()
 
     XCTAssertEqual(1, PersistenceManager.shared.count(entityName: AccountMO.className(), context: viewContext))
     PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: viewContext)
     XCTAssertEqual(0, PersistenceManager.shared.count(entityName: AccountMO.className(), context: viewContext))
+  }
+  
+  func testFindWithFetchRequestTemplate() {
+    let accountMO = AccountMO(context: viewContext)
+    
+    let vehicleMO = VehicleMO(context: viewContext)
+    vehicleMO.modelDescription = "Porsche Taycan 4S"
+    vehicleMO.modelType = "A Test Model Type"
+    vehicleMO.modelYear = "2021"
+    vehicleMO.vin = "VIN12345"
+    vehicleMO.licensePlate = "TAY-CAN"
+    accountMO.addToVehicles(vehicleMO)
+    viewContext.saveOrRollback()
+    
+    XCTAssertEqual(0, (PersistenceManager.shared.findWithFetchRequestTemplate(fetchRequestTemplateName: "FetchSelectedVehicle", context: viewContext)! as! [VehicleMO]).count)
+    
+    vehicleMO.selected = true
+    viewContext.saveOrRollback()
+    
+    XCTAssertEqual(1, (PersistenceManager.shared.findWithFetchRequestTemplate(fetchRequestTemplateName: "FetchSelectedVehicle", context: viewContext)! as! [VehicleMO]).count)
   }
 }

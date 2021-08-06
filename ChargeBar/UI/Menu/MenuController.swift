@@ -63,7 +63,7 @@ final class MenuController: NSObject {
   
   private func initPorscheConnect() {
     guard let password = KeychainSwift().get(kPasswordKeyForKeychain),
-          let accountMO = AppDelegate.persistenceManager.findFirst(entityName: AccountMO.className(), context: AppDelegate.persistenceManager.container.viewContext) as? AccountMO,
+          let accountMO = PersistenceManager.shared.findFirst(entityName: AccountMO.className(), context: PersistenceManager.shared.container.viewContext) as? AccountMO,
           let username = accountMO.username else { return }
     
     AppDelegate.porscheConnect = PorscheConnect(username: username, password: password)
@@ -75,7 +75,7 @@ final class MenuController: NSObject {
   @IBAction func refreshBtnPressed(_ sender: Any) {
     UILogger.info("Refresh menu item pressed.")
     guard let porscheConenct = AppDelegate.porscheConnect,
-          let selectedVehicle = findSelectedVehicle()
+          let selectedVehicle = PersistenceManager.shared.findWithFetchRequestTemplate(fetchRequestTemplateName: "FetchSelectedVehicle", context: PersistenceManager.shared.container.viewContext) as? VehicleMO
     else { return }
 
     EmobilityService(porscheConnect: porscheConenct, vehicleMO: selectedVehicle).sync { _ in
@@ -97,7 +97,7 @@ final class MenuController: NSObject {
   
   private func runInTestMode() {
     LifecycleLogger.info("Running in test mode.")
-    PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: AppDelegate.persistenceManager.container.viewContext)
+    PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: PersistenceManager.shared.container.viewContext)
     KeychainSwift().delete(kPasswordKeyForKeychain)
   }
   

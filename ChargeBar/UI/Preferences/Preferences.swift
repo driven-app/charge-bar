@@ -72,7 +72,7 @@ class PreferencesViewController: NSViewController, LoginSheetDelegate {
   @IBAction func loginLogoutBtnPressed(_ sender: Any) {
     UILogger.info("Login/Logout button pressed.")
     
-    AppDelegate.persistenceManager.deleteAll(entityName: AccountMO.className(), context: viewContext)
+    PersistenceManager.shared.deleteAll(entityName: AccountMO.className(), context: viewContext)
     viewContext.saveOrRollback()
     
     if let window = self.view.window {
@@ -166,7 +166,7 @@ extension PreferencesViewController: NSTableViewDelegate  {
   func tableViewSelectionDidChange(_ notification: Notification) {
     guard let selectedObjects = vehiclesArrayController.selectedObjects,
           let selectedVehicleMO = selectedObjects.first as? VehicleMO,
-          let accountMO = AppDelegate.persistenceManager.findFirst(entityName: AccountMO.className(), context: viewContext) as? AccountMO,
+          let accountMO = PersistenceManager.shared.findFirst(entityName: AccountMO.className(), context: viewContext) as? AccountMO,
           let vehicles = accountMO.vehicles,
           accountMO.provisioned else { return }
     
